@@ -5211,8 +5211,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4363419444461432324}
   - component: {fileID: 4363419444461432326}
-  - component: {fileID: 4363419444461432325}
   - component: {fileID: 4363419444461432327}
+  - component: {fileID: 4363419444461432325}
   - component: {fileID: 4363419444461432344}
   - component: {fileID: 4363419444461432346}
   - component: {fileID: 4363419444461432345}
@@ -5339,24 +5339,6 @@ MonoBehaviour:
   canMove: 1
   isCrouching: 0
   isSliding: 0
---- !u!143 &4363419444461432325
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4363419444461432323}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4363419444461432327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5382,8 +5364,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1025
   bullet: {fileID: 2847904816663271754, guid: 16e0b2ef0fc8734478a90e665ed5f762, type: 3}
+  bulletHole: {fileID: 4929977449947337, guid: a0fde4e04b637564c8fcc30deec66d95, type: 3}
   maxAmmo: 0
   currentAmmo: 0
+--- !u!143 &4363419444461432325
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363419444461432323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4363419444461432344
 MonoBehaviour:
   m_ObjectHideFlags: 0

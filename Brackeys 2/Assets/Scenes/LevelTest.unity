@@ -2365,6 +2365,12 @@ Transform:
   m_Father: {fileID: 2092949107}
   m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1480337949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4363419444461432323, guid: 26ade3a697242da46a572aec14b83d63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1416968467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1497152857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2971,7 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"collection":{"$content":[{"name":"Player","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
-    - {fileID: 0}
+    - {fileID: 1480337949}
 --- !u!4 &1789501475
 Transform:
   m_ObjectHideFlags: 0
@@ -3060,6 +3066,11 @@ PrefabInstance:
     - target: {fileID: 8700426955179783067, guid: 5de05084dfdcce44caab1bc444c9ce39,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955179863246, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8700426955182406608, guid: 5de05084dfdcce44caab1bc444c9ce39,
@@ -3581,7 +3592,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: cafb6a7adf5509f498029df5f2ae5791, type: 3}
 --- !u!1 &1850727545

@@ -22,10 +22,11 @@ MonoBehaviour:
   holdToFire: 0
   knockup: 1
   visualHorizontalRecoilMulti: 0.5
-  maxRecoil: 10
+  maxRecoil: 2
   bullets: 1
   shakeAmount: 3
   rotationSlowDownFactor: 1
+  isHitscan: 1
   projectile: {fileID: 4370573744249296770, guid: 16e0b2ef0fc8734478a90e665ed5f762,
     type: 3}
-  currentAmmo: 20
+  currentAmmo: 14

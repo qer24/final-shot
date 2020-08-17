@@ -2187,7 +2187,7 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"collection":{"$content":[{"name":"Player","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
-    - {fileID: 0}
+    - {fileID: 1983256810}
 --- !u!4 &1789501475
 Transform:
   m_ObjectHideFlags: 0
@@ -2507,6 +2507,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26ade3a697242da46a572aec14b83d63, type: 3}
+--- !u!1 &1983256810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4363419444461432323, guid: 26ade3a697242da46a572aec14b83d63,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983256809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027026843
 GameObject:
   m_ObjectHideFlags: 0

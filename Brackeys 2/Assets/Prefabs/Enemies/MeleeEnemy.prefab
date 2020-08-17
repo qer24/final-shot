@@ -1022,7 +1022,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 42d6a3db90f9d934f85c50a4949944c7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -2575,6 +2575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03b4dfdd18b9f14a9a5ff79465a997e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useOldBillboard: 1
+  lookRot: {x: 0, y: 0, z: 1}
+  axisMultiplier: {x: 1, y: 1, z: 1}
 --- !u!1 &8062183764859862363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,6 +2997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 036d19f25e2bd6b47a5f2b6bfaacb02a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 036d19f25e2bd6b47a5f2b6bfaacb02a, type: 3}

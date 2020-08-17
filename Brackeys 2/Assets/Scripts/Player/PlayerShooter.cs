@@ -29,6 +29,7 @@ public class PlayerShooter : MonoBehaviour
     public Transform shootPoint;
     public LayerMask ignorePlayerMask;
     public Bullet bullet;
+    public BulletHole bulletHole;
 
     Crosshair crosshair;
 
@@ -235,46 +236,82 @@ public class PlayerShooter : MonoBehaviour
         currentGun.currentAmmo = currentAmmo;
         OnAmmoChanged?.Invoke(AmmoCount);
 
-        Vector3 lookPoint;
-        var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, ignorePlayerMask))
-        {
-            lookPoint = hit.point;
-        }
-        else
-        {
-            if(!currentGun.holdToFire)
-            {
-                lookPoint = ray.GetPoint(100f);
-            }
-            else
-            {
-                lookPoint = ray.GetPoint(30f);
-            }
-        }
-
         for (int i = 0; i < currentGun.bullets; i++)
         {
             Vector3 gunRecoil = new Vector3(
                 Random.Range(-currentGun.maxRecoil, currentGun.maxRecoil),
                 Random.Range(-currentGun.maxRecoil, currentGun.maxRecoil),
                 Random.Range(-currentGun.maxRecoil, currentGun.maxRecoil))
-                * 0.1f;
+                * 0.01f;
 
             if (playerController.isCrouching || playerController.isSliding) gunRecoil *= 0.45f;
 
-            var projectile = Instantiate(currentGun.projectile, shootPoint.position - shootPoint.transform.forward, Quaternion.identity);
-            //lookPoint += gunRecoil;
-            projectile.transform.LookAt(lookPoint);
-            projectile.transform.Rotate(gunRecoil);
-            projectile.transform.position = shootPoint.position;
-            if (projectile.TryGetComponent<Bullet>(out var newBullet))
+            if (currentGun.isHitscan)
             {
-                newBullet.Init(currentGun.damage * playerStats.damageMultiplier, transform, projectile.transform.forward * currentGun.bulletSpeed);
-            }else if(projectile.TryGetComponent<GranadeBullet>(out var newGranade))
+                var ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward + gunRecoil);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, ignorePlayerMask))
+                {
+                    Debug.DrawRay(playerCamera.transform.position, (playerCamera.transform.forward + gunRecoil) * hit.distance, Color.red, 999f);
+
+                    if (hit.collider.CompareTag("Enemy"))
+                    {
+                        var ragdoll = hit.collider.GetComponent<RagdollDeath>();
+                        if (ragdoll == null) ragdoll = hit.collider.GetComponentInParent<RagdollDeath>();
+                        if (ragdoll != null) ragdoll.hitDirection = hit.collider.transform.position - transform.position;
+
+                        hit.collider.TryGetComponent<IDamagable>(out var damagable);
+                        if (damagable != null)
+                        {
+                            damagable.TakeDamage(currentGun.damage * playerStats.damageMultiplier);
+                        }
+
+                        return;
+                    }
+
+                    if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
+                    {
+                        Debug.Log(hit.collider.gameObject.name);
+                        AudioManager.Play("wallImpact", hit.point);
+                        Instantiate(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity).transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
+
+                        return;
+                    }
+                }
+            }else
             {
-                newGranade.Init(currentGun.damage * playerStats.damageMultiplier, transform, projectile.transform.forward * currentGun.bulletSpeed);
+                Vector3 lookPoint;
+                var ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, ignorePlayerMask))
+                {
+                    lookPoint = hit.point;
+                }
+                else
+                {
+                    if (!currentGun.holdToFire)
+                    {
+                        lookPoint = ray.GetPoint(100f);
+                    }
+                    else
+                    {
+                        lookPoint = ray.GetPoint(30f);
+                    }
+                }
+
+                var projectile = Instantiate(currentGun.projectile, shootPoint.position - shootPoint.transform.forward, Quaternion.identity);
+                //lookPoint += gunRecoil;
+                projectile.transform.LookAt(lookPoint);
+                projectile.transform.Rotate(gunRecoil);
+                projectile.transform.position = shootPoint.position;
+                if (projectile.TryGetComponent<Bullet>(out var newBullet))
+                {
+                    newBullet.Init(currentGun.damage * playerStats.damageMultiplier, transform, projectile.transform.forward * currentGun.bulletSpeed);
+                }
+                else if (projectile.TryGetComponent<GranadeBullet>(out var newGranade))
+                {
+                    newGranade.Init(currentGun.damage * playerStats.damageMultiplier, transform, projectile.transform.forward * currentGun.bulletSpeed);
+                }
             }
         }
 
