@@ -7555,6 +7555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f262a1dfd0e85b40a83ff46301f28dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
   walkingSpeed: 5
   runningSpeed: 9
   jumpSpeed: 8
@@ -7562,6 +7563,17 @@ MonoBehaviour:
   playerCamera: {fileID: 1687258584}
   lookSpeed: 2
   lookXLimit: 90
+  crouchPivot: {fileID: 0}
+  normalHeight: 2
+  crouchHeight: 1.5
+  crouchSlowdown: 0.6
+  crouchOffset: {x: 0, y: -0.5, z: 0}
+  slideTimeAfterRun: 0.5
+  slideSpeedUp: 0
+  slideSlowdown: 0
+  slideCooldown: 2
+  slideParticles: {fileID: 0}
+  slideSpeedlines: {fileID: 0}
   stepInterval: 5
   runstepLenghten: 0.7
   useHeadBob: 1
@@ -7625,6 +7637,8 @@ MonoBehaviour:
     BobAmount: 0.1
   hand: {fileID: 798963330}
   canMove: 1
+  isCrouching: 0
+  isSliding: 0
 --- !u!114 &1825388015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7637,6 +7651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b978a8182b70dd43835dd74bbcae3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
+  playerController: {fileID: 0}
   playerCamera: {fileID: 1687258584}
   gunPivot: {fileID: 230526990}
   currentGun: {fileID: 0}
@@ -7644,8 +7660,11 @@ MonoBehaviour:
   maxPickupDistance: 5
   dropForce: 15
   shootPoint: {fileID: 1097674210}
+  ignorePlayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   bullet: {fileID: 2847904816663271754, guid: 16e0b2ef0fc8734478a90e665ed5f762, type: 3}
-  crosshair: {fileID: 2114802134}
+  maxAmmo: 0
   currentAmmo: 0
 --- !u!114 &1825388016
 MonoBehaviour:
@@ -7702,6 +7721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5439545d864710548a33c2d5fdfaa817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
   recordTime: 2
   hp: {fileID: 1825388016}
   playerShooter: {fileID: 1825388015}

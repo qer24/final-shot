@@ -30,7 +30,7 @@ public class PlayerShooter : MonoBehaviour
     public LayerMask ignorePlayerMask;
     public Bullet bullet;
 
-    public Crosshair crosshair;
+    Crosshair crosshair;
 
     float shootTimer = 0f;
     Quaternion startRotation;
@@ -51,6 +51,8 @@ public class PlayerShooter : MonoBehaviour
 
         isPickingUpGun = false;
         playerStats.onStatsChanged += UpdateStats;
+
+        crosshair = Crosshair.instance;
     }
 
     void Update()
