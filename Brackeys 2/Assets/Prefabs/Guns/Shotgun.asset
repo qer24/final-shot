@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc4d437081a4bb46a8e69cf70f941f8, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  transform: {fileID: 0}
+  pickupScript: {fileID: 0}
+  shootSound: shootShotgun
+  shootCooldown: 1
+  damage: 5
+  baseAmmo: 5
+  bulletSpeed: 20
+  holdToFire: 0
+  knockup: 1
+  visualHorizontalRecoilMulti: 0.5
+  maxRecoil: 50
+  bullets: 15
+  shakeAmount: 10
+  rotationSlowDownFactor: 1
+  projectile: {fileID: 4370573744249296770, guid: 16e0b2ef0fc8734478a90e665ed5f762,
+    type: 3}
+  currentAmmo: 5

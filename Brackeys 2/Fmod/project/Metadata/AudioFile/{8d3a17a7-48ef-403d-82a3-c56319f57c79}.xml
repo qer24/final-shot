@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{8d3a17a7-48ef-403d-82a3-c56319f57c79}">
+		<property name="assetPath">
+			<value>Cannon impact 9.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.6406458333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{093c045c-0e39-4dc3-ba09-2b26fe35bf5b}</destination>
+		</relationship>
+	</object>
+</objects>
