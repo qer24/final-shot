@@ -30,6 +30,7 @@ public class PlayerShooter : MonoBehaviour
     public LayerMask ignorePlayerMask;
     public Bullet bullet;
     public BulletHole bulletHole;
+    public BulletTrace bulletTrace;
 
     Crosshair crosshair;
 
@@ -265,18 +266,19 @@ public class PlayerShooter : MonoBehaviour
                         {
                             damagable.TakeDamage(currentGun.damage * playerStats.damageMultiplier);
                         }
-
-                        return;
-                    }
-
-                    if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
+                    }else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
                     {
-                        Debug.Log(hit.collider.gameObject.name);
                         AudioManager.Play("wallImpact", hit.point);
                         Instantiate(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity).transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
-
-                        return;
                     }
+
+                    if (hit.distance < 100f && hit.distance > 0.5f)
+                    {
+                        Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - playerCamera.transform.position, hit.point);
+                    }
+                }else
+                {
+                    Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - playerCamera.transform.position, ray.GetPoint(100f));
                 }
             }else
             {
