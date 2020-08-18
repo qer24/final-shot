@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: bbf36c603dbd5cc418a362023bc31f1b, type: 2}
   currentHealth: 0
+  isDead: 0
 --- !u!114 &7143774138279309831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,7 +1127,7 @@ MonoBehaviour:
   navMesh: {fileID: 7143774138279309881}
   anim: {fileID: 8525466319162643106}
   weapon: {fileID: 6477092314736508439}
-  minDistanceToAttack: 2.5
+  minDistanceToAttack: 1.5
   rotSpeed: 7
 --- !u!195 &7143774138279309881
 NavMeshAgent:
@@ -1592,7 +1593,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  m_Radius: 2.4
+  m_Radius: 1.5
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}

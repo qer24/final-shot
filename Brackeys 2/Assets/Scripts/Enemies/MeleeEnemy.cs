@@ -50,6 +50,7 @@ public class MeleeEnemy : MonoBehaviour
             {
                 navMesh.ResetPath();
                 navMesh.isStopped = true;
+                navMesh.velocity = Vector3.zero;
             }
 
             isAttacking = true;

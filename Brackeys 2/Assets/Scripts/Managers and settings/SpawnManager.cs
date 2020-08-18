@@ -124,6 +124,18 @@ public class SpawnManager : MonoBehaviour
         takenSpawnPoints.Add(randomSpawnPoint);
 
         GameObject enemy;
+        if(currentWave == 1 || currentWave == 2)
+        {
+            enemy = enemiesToSpawn[0].prefab;
+        }
+        if (currentWave == 3)
+        {
+            enemy = enemiesToSpawn[3].prefab;
+        }
+        if (currentWave == 4)
+        {
+            enemy = enemiesToSpawn[2].prefab;
+        }
         if (currentWave % 15 == 0 && !spawnedBoss)
         {
             enemy = boss;
