@@ -1337,8 +1337,8 @@ RectTransform:
   m_Father: {fileID: 8700426956385509736}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.75, y: 0}
-  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2357,6 +2357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e0f75b590650448ad3bd271d9b8478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardsManager: {fileID: 0}
   spawnPoints:
   - {fileID: 8700426955568379853}
   - {fileID: 8700426955317942372}
@@ -2434,7 +2435,6 @@ MonoBehaviour:
   boss: {fileID: 811073063457502919, guid: 280625a3dde32f14bb77e2c8be19138a, type: 3}
   enemySpawnerPrefab: {fileID: 2555997148007565899, guid: 5e8676d66b1eeed4fb8dfc7f061e4daa,
     type: 3}
-  timeBetweenWaves: 30
   minEnemies: 2
   maxEnemies: 4
   enemyRuntimeSet: {fileID: 11400000, guid: decb78cbb9b7a1e40b6f2c1cef77f23f, type: 2}
@@ -5364,8 +5364,6 @@ MonoBehaviour:
     text: {fileID: 8700426955319055988}
   rewardPanel: {fileID: 8700426955787678447}
   rewardsText: {fileID: 8700426956527578849}
-  timeBetweenRewards: 60
-  timeAtNextReward: 60
   maxMoveSpeed: 1.5
   droppableGuns:
   - {fileID: 4101701848491605591, guid: 35dff7ce08316f94f839faf3eb0ba1af, type: 3}
@@ -9691,7 +9689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4382af1d08b644abeadc1017d6a94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardsManager: {fileID: 8700426956010445016}
   difficultyCurve:
     serializedVersion: 2
     m_Curve:

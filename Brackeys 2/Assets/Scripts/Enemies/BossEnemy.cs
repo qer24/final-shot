@@ -35,7 +35,7 @@ public class BossEnemy : MonoBehaviour
 
     void Shoot()
     {
-        AudioManager.Play("shootEnemy");
+        AudioManager.Play("shootEnemy", transform.position);
         for (int i = 0; i < shootPositions.Length; i++)
         {
             var newBullet = Instantiate(bullet, shootPositions[i].position, shootPositions[i].rotation);

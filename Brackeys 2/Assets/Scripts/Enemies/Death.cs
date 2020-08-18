@@ -22,7 +22,7 @@ public abstract class Death : MonoBehaviour
 
     void OnDestroy()
     {
-        Die();
+        if(!hp.isDead) Die();
         hp.OnDeath -= Die;
     }
 

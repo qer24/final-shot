@@ -16,7 +16,7 @@ MonoBehaviour:
   pickupScript: {fileID: 0}
   shootSound: shootRevolver
   shootCooldown: 1.5
-  damage: 75
+  damage: 85
   baseAmmo: 6
   bulletSpeed: 100
   holdToFire: 0
@@ -26,6 +26,7 @@ MonoBehaviour:
   bullets: 1
   shakeAmount: 3
   rotationSlowDownFactor: 0.4
+  isHitscan: 1
   projectile: {fileID: 4370573744249296770, guid: 16e0b2ef0fc8734478a90e665ed5f762,
     type: 3}
-  currentAmmo: 0
+  currentAmmo: 6

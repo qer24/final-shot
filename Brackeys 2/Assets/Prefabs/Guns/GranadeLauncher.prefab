@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133252033465422307}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: grenade_launcher_018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4537468780421001125}
   - component: {fileID: 3104062181601103240}
   - component: {fileID: 7920626268574143513}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

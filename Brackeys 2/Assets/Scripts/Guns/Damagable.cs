@@ -24,6 +24,8 @@ public class Damagable : MonoBehaviour, IDamagable
 
     public virtual void TakeDamage(float amount)
     {
+        if (hp.isDead) return;
+
         hp.RemoveHealth(amount);
         if(!isPlayer)
         {

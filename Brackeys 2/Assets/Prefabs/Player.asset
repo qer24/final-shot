@@ -18,3 +18,4 @@ MonoBehaviour:
   speedMultiplier: 1
   magazineMultiplier: 1
   fireRateMultiplier: 1
+  rewindCooldownReduction: 0

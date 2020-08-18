@@ -6,7 +6,6 @@ using System;
 
 public class DifficultyManager : MonoBehaviour
 {
-    public RewardsManager rewardsManager;
     public static float difficultyMultiplier;
     public AnimationCurve difficultyCurve;
     public TextMeshProUGUI timerText;
@@ -24,7 +23,6 @@ public class DifficultyManager : MonoBehaviour
         if (GameManager.isPlayerDead) return;
 
         timePassed ++;
-        if (timePassed == rewardsManager.timeAtNextReward) rewardsManager.DisplayRewards();
         UpdateUI();
         difficultyMultiplier = difficultyCurve.Evaluate(timePassed);
     }

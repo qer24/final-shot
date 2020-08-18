@@ -24,8 +24,9 @@ MonoBehaviour:
   visualHorizontalRecoilMulti: 0.5
   maxRecoil: 15
   bullets: 1
-  shakeAmount: 3
+  shakeAmount: 15
   rotationSlowDownFactor: 0.4
+  isHitscan: 0
   projectile: {fileID: 4370573744249296770, guid: e69a345129ad0674da8d78c3cb374756,
     type: 3}
-  currentAmmo: 1
+  currentAmmo: 6

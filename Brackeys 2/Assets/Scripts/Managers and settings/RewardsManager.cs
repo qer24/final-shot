@@ -21,8 +21,6 @@ public class RewardsManager : MonoBehaviour
     public RewardContainer[] rewardContainers;
     public GameObject rewardPanel;
     public TextMeshProUGUI rewardsText;
-    public float timeBetweenRewards = 120;
-    public float timeAtNextReward = 120;
 
     [SerializeField] float maxMoveSpeed = 1.5f;
 
@@ -33,6 +31,8 @@ public class RewardsManager : MonoBehaviour
     static string healRewardString = "Restore 10 health";
     static string firerateRewardString = "+5% fire rate";
     static string rewindRewardString = "-0.5s to rewind cooldown";
+
+    int currentReward = 0;
 
     public class Reward
     {
@@ -71,14 +71,15 @@ public class RewardsManager : MonoBehaviour
 
     public void DisplayRewards()
     {
+        currentReward++;
+
         isChoosingReward = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         Time.timeScale = 0;
 
-        rewardsText.text = $"You survived {Mathf.RoundToInt(timeAtNextReward / 60)} minutes";
-        timeAtNextReward += timeBetweenRewards;
+        rewardsText.text = $"You survived {Mathf.RoundToInt(SpawnManager.currentWave - 1)} waves";
 
         rewards = RandomRewards();
 
@@ -189,10 +190,25 @@ public class RewardsManager : MonoBehaviour
     List<Reward> RandomRewards()
     {
         List<Reward> rewards = new List<Reward>();
+        List<int> takenIndexes = new List<int>();
 
+        bool guaranteedGunGotten = false;
         while (rewards.Count < 3)
         {
             int randomIndex = Random.Range(1, 8);
+            if (currentReward % 3 == 0 && !guaranteedGunGotten)
+            {
+                guaranteedGunGotten = true;
+                randomIndex = 2;
+            }else
+            {
+                while(takenIndexes.Contains(randomIndex))
+                {
+                    randomIndex = Random.Range(1, 8);
+                }
+            }
+            takenIndexes.Add(randomIndex);
+
             if (randomIndex == 1 && playerStats.speedMultiplier < maxMoveSpeed)
             {
                 Action methodToCall;

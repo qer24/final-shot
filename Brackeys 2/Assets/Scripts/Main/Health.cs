@@ -12,9 +12,13 @@ public class Health : MonoBehaviour
     public HealthAction OnHealthChanged;
     public Action OnDeath;
 
+    public bool isDead;
+
     void Start()
     {
         currentHealth = stats.maxHealth;
+
+        isDead = false;
     }
 
     public void RemoveHealth(float amount)
@@ -33,6 +37,9 @@ public class Health : MonoBehaviour
 
     void Death()
     {
+        if (isDead) return;
+
+        isDead = true;
         OnDeath?.Invoke();
     }
 }

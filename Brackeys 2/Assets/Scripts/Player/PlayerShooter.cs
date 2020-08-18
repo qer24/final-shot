@@ -274,11 +274,11 @@ public class PlayerShooter : MonoBehaviour
 
                     if (hit.distance < 100f && hit.distance > 0.5f)
                     {
-                        Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - playerCamera.transform.position, hit.point);
+                        Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - shootPoint.position, hit.point);
                     }
                 }else
                 {
-                    Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - playerCamera.transform.position, ray.GetPoint(100f));
+                    Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f));
                 }
             }else
             {

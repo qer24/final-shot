@@ -10,16 +10,18 @@ public class SpawnManager : MonoBehaviour
         public int weight;
     }
 
+    public RewardsManager rewardsManager;
+
     public Transform[] spawnPoints;
     public WeightedEnemy[] enemiesToSpawn;
     public GameObject boss;
 
     public EnemySpawner enemySpawnerPrefab;
 
-    public float timeBetweenWaves = 15f;
     public int minEnemies = 2;
     public int maxEnemies = 3;
-    int currentWave;
+    public static int currentWave = 0;
+    int wavesUntilNextReward = 2;
     bool spawnedBoss;
 
     public EnemyRuntimeSet enemyRuntimeSet;
@@ -33,9 +35,9 @@ public class SpawnManager : MonoBehaviour
         enemyRuntimeSet.Reset();
         isSpawning = false;
 
-        StartCoroutine(SpawnWave(timeBetweenWaves / 3));
-        currentWave = 1;
+        currentWave = 0;
         spawnedBoss = false;
+        StartCoroutine(SpawnWave(10f));
     }
 
     private void OnEnable()
@@ -68,6 +70,14 @@ public class SpawnManager : MonoBehaviour
     {
         spawnedBoss = false;
         currentWave++;
+        if (currentWave % 10 == 0)
+        {
+            wavesUntilNextReward++;
+        }
+        if(currentWave % wavesUntilNextReward == 1 && currentWave != 1)
+        {
+            rewardsManager.DisplayRewards();
+        }
 
         yield return new WaitForSeconds(delay);
 
@@ -87,17 +97,13 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-            enemyCount = Mathf.RoundToInt(Random.Range(minEnemies, maxEnemies) * DifficultyManager.difficultyMultiplier);
+            enemyCount = Mathf.RoundToInt(Random.Range(minEnemies * DifficultyManager.difficultyMultiplier, maxEnemies * DifficultyManager.difficultyMultiplier));
         }
 
         for (int i = 0; i < enemyCount; i++)
         {
             SpawnEnemy();
         }
-
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-        StartCoroutine(SpawnWave());
     }
 
     void ResetSpawningBool()
@@ -163,5 +169,10 @@ public class SpawnManager : MonoBehaviour
 
         // No other item was selected, so return very last index.
         return index;
+    }
+
+    private void OnGUI()
+    {
+        GUILayout.Label($"current wave = {currentWave}");
     }
 }

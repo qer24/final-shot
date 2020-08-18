@@ -16,16 +16,17 @@ MonoBehaviour:
   pickupScript: {fileID: 0}
   shootSound: shootShotgun
   shootCooldown: 1
-  damage: 5
+  damage: 15
   baseAmmo: 5
   bulletSpeed: 20
   holdToFire: 0
   knockup: 1
   visualHorizontalRecoilMulti: 0.5
-  maxRecoil: 50
+  maxRecoil: 5
   bullets: 15
   shakeAmount: 10
   rotationSlowDownFactor: 1
+  isHitscan: 1
   projectile: {fileID: 4370573744249296770, guid: 16e0b2ef0fc8734478a90e665ed5f762,
     type: 3}
   currentAmmo: 5
