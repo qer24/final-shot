@@ -87,7 +87,15 @@ public class SpawnManager : MonoBehaviour
         takenSpawnPoints = new List<int>();
 
         int enemyCount;
-        if (currentWave == 25 || currentWave == 60)
+        if(currentWave == 1)
+        {
+            enemyCount = 1;
+        }
+        if(currentWave == 4)
+        {
+            enemyCount = 2;
+        }
+        else if (currentWave == 25 || currentWave == 60)
         {
             enemyCount = 15;
         }
@@ -126,17 +134,18 @@ public class SpawnManager : MonoBehaviour
         GameObject enemy;
         if(currentWave == 1 || currentWave == 2)
         {
+            Debug.Log("pistol");
             enemy = enemiesToSpawn[0].prefab;
         }
-        if (currentWave == 3)
+        else if (currentWave == 3)
         {
             enemy = enemiesToSpawn[3].prefab;
         }
-        if (currentWave == 4)
+        else if (currentWave == 4)
         {
             enemy = enemiesToSpawn[2].prefab;
         }
-        if (currentWave % 15 == 0 && !spawnedBoss)
+        else if (currentWave % 15 == 0 && !spawnedBoss)
         {
             enemy = boss;
             spawnedBoss = true; 

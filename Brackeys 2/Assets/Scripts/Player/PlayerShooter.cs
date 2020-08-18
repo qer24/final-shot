@@ -80,30 +80,28 @@ public class PlayerShooter : MonoBehaviour
         {
             if (Input.GetButtonDown("Pickup"))
             {
+                /*
                 if (currentGun != null)
                 {
                     DropCurrentGun();
                 }
+                */
 
                 StopAllCoroutines();
                 StartCoroutine(PickupGun(currentlyHighlightedGun.transform));
-
-                maxAmmo = Mathf.RoundToInt(currentGun.baseAmmo * playerStats.magazineMultiplier);
-                currentAmmo = currentGun.currentAmmo;
-                OnAmmoChanged?.Invoke(AmmoCount);
             }
         }
 
         if (currentGun != null && !isPickingUpGun)
         {
+            /*
             if(Input.GetButtonDown("Drop"))
             {
                 DropCurrentGun();
 
                 return;
             }
-
-            SwayWeapon();
+            */
 
             shootTimer -= Time.deltaTime;
 
@@ -134,11 +132,6 @@ public class PlayerShooter : MonoBehaviour
         maxAmmo = 0;
         currentAmmo = 0;
         OnAmmoChanged?.Invoke(AmmoCount);
-    }
-
-    private void SwayWeapon()
-    {
-        currentGun.transform.position = Vector3.Slerp(currentGun.transform.position, gunPivotPosLastFrame, Time.deltaTime * 5f);
     }
 
     private void DetectPickups()
@@ -180,18 +173,24 @@ public class PlayerShooter : MonoBehaviour
         crosshair.SetCrosshair(currentlyHighlightedGun != null);
     }
 
-    IEnumerator PickupGun(Transform pickedUpGun)
+    public IEnumerator PickupGun(Transform pickedUpGun)
     {
         AudioManager.Play("equipGun");
 
+        maxAmmo = Mathf.RoundToInt(currentGun.baseAmmo * playerStats.magazineMultiplier);
+        currentAmmo = currentGun.currentAmmo;
+        OnAmmoChanged?.Invoke(AmmoCount);
+
         isPickingUpGun = true;
 
-        var gunPickupScript = pickedUpGun.GetComponent<GunPickup>();
-        gunPickupScript.Pickup();
-        currentGun = gunPickupScript.scriptableObject;
+        //var gunPickupScript = pickedUpGun.GetComponent<GunPickup>();
+        //gunPickupScript.Pickup();
+        //currentGun = gunPickupScript.scriptableObject;
 
-        pickedUpGun.gameObject.layer = 8;
-        pickedUpGun.GetComponentInChildren<MeshRenderer>().gameObject.layer = 8;
+        //pickedUpGun.gameObject.layer = 8;
+        //pickedUpGun.GetComponentInChildren<MeshRenderer>().gameObject.layer = 8;
+
+        pickedUpGun.transform.position = gunPivot.position - Vector3.up;
 
         float lerpMulti = 1f;
         float timeOutTimer = 0f;
@@ -210,7 +209,7 @@ public class PlayerShooter : MonoBehaviour
             yield return null;
         }
 
-        pickedUpGun.parent = gunPivot;
+        //pickedUpGun.parent = gunPivot;
         pickedUpGun.localPosition = Vector3.zero;
         pickedUpGun.localRotation = Quaternion.identity;
         isPickingUpGun = false;
