@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   damage: 0
-  damageMultiplier: 1
+  damageMultiplier: 1.2
   speedMultiplier: 1
   magazineMultiplier: 1
-  fireRateMultiplier: 1
+  fireRateMultiplier: 0.95
   rewindCooldownReduction: 0

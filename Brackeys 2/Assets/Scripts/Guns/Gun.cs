@@ -27,7 +27,7 @@ public class Gun : ScriptableObject
     public bool isHitscan = false;
     public GameObject projectile;
 
-    public AnimationCurve damageFalloffCurve;
+    public AnimationCurve damageFalloffCurve = AnimationCurve.Constant(0, 1, 1);
 
     [HideInInspector]
     public int currentAmmo;

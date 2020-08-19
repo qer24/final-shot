@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f510a1b6534cb408816fbbf606a28b, type: 3}
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: 
-  maxHealth: 200
-  damage: 5
+  maxHealth: 150
+  damage: 10
   damageMultiplier: 1
   speedMultiplier: 1
   magazineMultiplier: 0
+  fireRateMultiplier: 1
+  rewindCooldownReduction: 0
