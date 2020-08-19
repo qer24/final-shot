@@ -25,7 +25,9 @@ public class Gun : ScriptableObject
     public float shakeAmount = 1f;
     public float rotationSlowDownFactor = 1f;
     public bool isHitscan = false;
-    public GameObject projectile;   
+    public GameObject projectile;
+
+    public AnimationCurve damageFalloffCurve;
 
     [HideInInspector]
     public int currentAmmo;

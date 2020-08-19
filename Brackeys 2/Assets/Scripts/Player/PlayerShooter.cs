@@ -244,7 +244,8 @@ public class PlayerShooter : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, ignorePlayerMask))
                 {
-                    Debug.DrawRay(playerCamera.transform.position, (playerCamera.transform.forward + gunRecoil) * hit.distance, Color.red, 999f);
+                    //Debug.Log(hit.distance);
+                    //Debug.DrawRay(playerCamera.transform.position, (playerCamera.transform.forward + gunRecoil) * hit.distance, Color.red, 999f);
 
                     if (hit.collider.CompareTag("Enemy"))
                     {
@@ -255,7 +256,8 @@ public class PlayerShooter : MonoBehaviour
                         hit.collider.TryGetComponent<IDamagable>(out var damagable);
                         if (damagable != null)
                         {
-                            damagable.TakeDamage(currentGun.damage * playerStats.damageMultiplier);
+                            float falloffDamageMulti = currentGun.damageFalloffCurve.Evaluate(hit.distance);
+                            damagable.TakeDamage(currentGun.damage * playerStats.damageMultiplier * falloffDamageMulti);
                         }
                     }else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
                     {
