@@ -134,7 +134,6 @@ public class SpawnManager : MonoBehaviour
         GameObject enemy;
         if(currentWave == 1 || currentWave == 2)
         {
-            Debug.Log("pistol");
             enemy = enemiesToSpawn[0].prefab;
         }
         else if (currentWave == 3)

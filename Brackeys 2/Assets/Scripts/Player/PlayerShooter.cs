@@ -34,6 +34,9 @@ public class PlayerShooter : MonoBehaviour
 
     Crosshair crosshair;
 
+    public delegate void PickupAction(Gun pickedUpGun);
+    public PickupAction onPickedUpGun;
+
     float shootTimer = 0f;
     Quaternion startRotation;
     Vector3 startPosition;
@@ -87,8 +90,11 @@ public class PlayerShooter : MonoBehaviour
                 }
                 */
 
-                StopAllCoroutines();
-                StartCoroutine(PickupGun(currentlyHighlightedGun.transform));
+                onPickedUpGun?.Invoke(currentlyHighlightedGun.scriptableObject);
+                Destroy(currentlyHighlightedGun.gameObject);
+
+                //StopAllCoroutines();
+                //StartCoroutine(PickupGun(currentlyHighlightedGun.transform));
             }
         }
 
@@ -118,20 +124,6 @@ public class PlayerShooter : MonoBehaviour
                 AudioManager.Play("emptyMagazine");
             }
         }
-    }
-
-    private void DropCurrentGun()
-    {
-        currentGun.transform.gameObject.layer = 9;
-        currentGun.transform.GetComponentInChildren<MeshRenderer>().gameObject.layer = 9;
-
-        currentGun.transform.parent = null;
-        currentGun.pickupScript.Drop((playerCamera.transform.forward + Vector3.up * 0.35f) * dropForce);
-        currentGun = null;
-
-        maxAmmo = 0;
-        currentAmmo = 0;
-        OnAmmoChanged?.Invoke(AmmoCount);
     }
 
     private void DetectPickups()

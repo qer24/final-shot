@@ -34,6 +34,8 @@ public class RewardsManager : MonoBehaviour
 
     int currentReward = 0;
 
+    public InventoryManager inventoryManager;
+
     public class Reward
     {
         public string message;
@@ -165,7 +167,9 @@ public class RewardsManager : MonoBehaviour
     {
         GunPickup gun = droppableGuns[0];
 
-        Instantiate(gun, player.position + (Vector3.up * 0.35f), Quaternion.identity).Drop(player.forward * 15f);
+        //Instantiate(gun, player.position + (Vector3.up * 0.35f), Quaternion.identity).Drop(player.forward * 15f);
+        inventoryManager.UnlockNewGun(gun.scriptableObject);
+
         droppableGuns.RemoveAt(0);
 
         ResumeGameplay();

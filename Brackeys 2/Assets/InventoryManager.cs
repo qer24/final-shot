@@ -17,13 +17,32 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         playerShooter = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShooter>();
+        playerShooter.onPickedUpGun += UnlockNewGun;
+    }
+
+    private void OnDisable()
+    {
+        playerShooter.onPickedUpGun -= UnlockNewGun;
+    }
+
+    public void UnlockNewGun(Gun newGun)
+    {
+        for (int i = 0; i < guns.Length; i++)
+        {
+            if(guns[i] == newGun)
+            {
+                inventoryPanel.transform.GetChild(i + 1).gameObject.SetActive(true);
+                SelectGun(i + 1);
+                return;
+            }
+        }
     }
 
     private void Update()
     {
         for (int i = 1; i <= 6; i++)
         {
-            if (Input.GetKeyDown(i.ToString()))
+            if (Input.GetKeyDown(i.ToString()) && inventoryPanel.transform.GetChild(i).gameObject.activeSelf)
             {
                 if(playerShooter.currentGun != guns[i - 1])
                     SelectGun(i);
