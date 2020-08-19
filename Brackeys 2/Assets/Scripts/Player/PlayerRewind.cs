@@ -30,7 +30,7 @@ public partial class PlayerRewind : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !isRewinding && (rewindCooldownRemaining - playerStats.rewindCooldownReduction) < 0)
+        if (Input.GetKeyDown(KeyCode.F) && !isRewinding && (rewindCooldownRemaining) < 0)
             StartRewind();
     }
 
@@ -83,7 +83,7 @@ public partial class PlayerRewind : MonoBehaviour
     {
         AudioManager.Play("rewind");
 
-        rewindCooldownRemaining = rewindCooldown;
+        rewindCooldownRemaining = rewindCooldown - playerStats.rewindCooldownReduction;
         isRewinding = true;
 
         //playerShooter.enabled = false;
