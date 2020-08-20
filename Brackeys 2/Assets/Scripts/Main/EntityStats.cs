@@ -15,5 +15,9 @@ public class EntityStats : ScriptableObject
     public float magazineMultiplier = 1;
     public float fireRateMultiplier = 1;
     public float rewindCooldownReduction = 0;
+    public float healOnRewind = 0;
+    public float chanceToDoubleDamage = 0;
+    public int additionalProjectiles = 0;
+
     public Action onStatsChanged;
 }

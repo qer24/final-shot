@@ -24,13 +24,15 @@ public class RewardsManager : MonoBehaviour
 
     [SerializeField] float maxMoveSpeed = 1.5f;
 
-    static string moveSpeedRewardString = "+10% movement speed";
-    static string newWeaponRewardString = "New weapon: ";
-    static string magSizeRewardString = "+10% magazine size";
-    static string damageRewardString = "+10% damage";
-    static string healRewardString = "Restore 10 health";
-    static string firerateRewardString = "+5% fire rate";
-    static string rewindRewardString = "-0.5s to rewind cooldown";
+    string moveSpeedRewardString = "+10% movement speed";
+    string newWeaponRewardString = "New weapon: ";
+    string magSizeRewardString = "+10% magazine size";
+    string damageRewardString = "+10% damage";
+    string healRewardString = "Restore 5 health after rewind";
+    string firerateRewardString = "+5% fire rate";
+    string rewindRewardString = "-0.5s to rewind cooldown";
+    string doubleDamageRewardString = "+2% to deal double damage";
+    string additionalProjectileRewardString { get => $"10% chance to fire +{playerStats.additionalProjectiles + 1} bullet"; }
 
     int currentReward = 0;
 
@@ -69,6 +71,9 @@ public class RewardsManager : MonoBehaviour
         playerStats.magazineMultiplier = 1;
         playerStats.speedMultiplier = 1;
         playerStats.rewindCooldownReduction = 0;
+        playerStats.healOnRewind = 0;
+        playerStats.chanceToDoubleDamage = 0;
+        playerStats.additionalProjectiles = 0;
     }
 
     public void DisplayRewards()
@@ -155,9 +160,9 @@ public class RewardsManager : MonoBehaviour
         ResumeGameplay();
     }
 
-    void RestoreHealth()
+    void IncreaseHealOnRewind()
     {
-        player.GetComponent<Health>().RestoreHealth(10f);
+        playerStats.healOnRewind += 5;
         playerStats.onStatsChanged?.Invoke();
 
         ResumeGameplay();
@@ -191,6 +196,22 @@ public class RewardsManager : MonoBehaviour
         ResumeGameplay();
     }
 
+    void IncreaseDoubleDamageChance()
+    {
+        playerStats.chanceToDoubleDamage += 2f;
+        playerStats.onStatsChanged?.Invoke();
+
+        ResumeGameplay();
+    }
+
+    void IncreaseAdditionalProjectiles()
+    {
+        playerStats.additionalProjectiles += 1;
+        playerStats.onStatsChanged?.Invoke();
+
+        ResumeGameplay();
+    }
+
     List<Reward> RandomRewards()
     {
         List<Reward> rewards = new List<Reward>();
@@ -199,7 +220,7 @@ public class RewardsManager : MonoBehaviour
         bool guaranteedGunGotten = false;
         while (rewards.Count < 3)
         {
-            int randomIndex = Random.Range(1, 8);
+            int randomIndex = Random.Range(1, 10);
             if (currentReward % 3 == 0 && !guaranteedGunGotten)
             {
                 guaranteedGunGotten = true;
@@ -208,7 +229,7 @@ public class RewardsManager : MonoBehaviour
             {
                 while(takenIndexes.Contains(randomIndex))
                 {
-                    randomIndex = Random.Range(1, 8);
+                    randomIndex = Random.Range(1, 10);
                 }
             }
             takenIndexes.Add(randomIndex);
@@ -235,10 +256,10 @@ public class RewardsManager : MonoBehaviour
                 Action methodToCall;
                 rewards.Add(new Reward(damageRewardString, methodToCall = IncreaseDamage));
             }
-            else if (randomIndex == 5)
+            else if (randomIndex == 5 && playerStats.healOnRewind == 0)
             {
                 Action methodToCall;
-                rewards.Add(new Reward(healRewardString, methodToCall = RestoreHealth));
+                rewards.Add(new Reward(healRewardString, methodToCall = IncreaseHealOnRewind));
             }
             else if (randomIndex == 6 && playerStats.fireRateMultiplier > 0.5f)
             {
@@ -249,6 +270,16 @@ public class RewardsManager : MonoBehaviour
             {
                 Action methodToCall;
                 rewards.Add(new Reward(rewindRewardString, methodToCall = ReduceRewindCooldown));
+            }
+            else if (randomIndex == 8 && playerStats.chanceToDoubleDamage < 8)
+            {
+                Action methodToCall;
+                rewards.Add(new Reward(doubleDamageRewardString, methodToCall = IncreaseDoubleDamageChance));
+            }
+            else if (randomIndex == 9 && playerStats.additionalProjectiles < 2)
+            {
+                Action methodToCall;
+                rewards.Add(new Reward(additionalProjectileRewardString, methodToCall = IncreaseAdditionalProjectiles));
             }
         }
 

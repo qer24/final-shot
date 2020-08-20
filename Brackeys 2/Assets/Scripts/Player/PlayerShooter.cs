@@ -228,7 +228,10 @@ public class PlayerShooter : MonoBehaviour
         currentGun.currentAmmo = currentAmmo;
         OnAmmoChanged?.Invoke(AmmoCount);
 
-        for (int i = 0; i < currentGun.bullets; i++)
+        float damage = CalculateDamage();
+        int bullets = currentGun.bullets + (Random.value <= 0.1f ? playerStats.additionalProjectiles : 0);
+
+        for (int i = 0; i < bullets; i++)
         {
             Vector3 gunRecoil = new Vector3(
                 Random.Range(-currentGun.maxRecoil, currentGun.maxRecoil),
@@ -257,7 +260,7 @@ public class PlayerShooter : MonoBehaviour
                         if (damagable != null)
                         {
                             float falloffDamageMulti = currentGun.damageFalloffCurve.Evaluate(hit.distance);
-                            damagable.TakeDamage(currentGun.damage * playerStats.damageMultiplier * falloffDamageMulti);
+                            damagable.TakeDamage(damage * falloffDamageMulti);
                         }
                     }else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
                     {
@@ -301,11 +304,11 @@ public class PlayerShooter : MonoBehaviour
                 projectile.transform.position = shootPoint.position;
                 if (projectile.TryGetComponent<Bullet>(out var newBullet))
                 {
-                    newBullet.Init(currentGun.damage * playerStats.damageMultiplier, transform, projectile.transform.forward * currentGun.bulletSpeed);
+                    newBullet.Init(damage, transform, projectile.transform.forward * currentGun.bulletSpeed);
                 }
                 else if (projectile.TryGetComponent<GranadeBullet>(out var newGranade))
                 {
-                    newGranade.Init(currentGun.damage * playerStats.damageMultiplier, transform, projectile.transform.forward * currentGun.bulletSpeed);
+                    newGranade.Init(damage, transform, projectile.transform.forward * currentGun.bulletSpeed);
                 }
             }
         }
@@ -328,6 +331,15 @@ public class PlayerShooter : MonoBehaviour
             }
         }
         */
+    }
+
+    private float CalculateDamage()
+    {
+        if(Random.Range(0.00f, 1.00f) <= playerStats.chanceToDoubleDamage * 0.01f)
+        {
+            return currentGun.damage * playerStats.damageMultiplier * 2;
+        }
+        return currentGun.damage * playerStats.damageMultiplier;
     }
 
     void UpdateStats()

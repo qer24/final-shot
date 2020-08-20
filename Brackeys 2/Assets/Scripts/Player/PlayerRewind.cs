@@ -30,8 +30,11 @@ public partial class PlayerRewind : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !isRewinding && (rewindCooldownRemaining) < 0)
-            StartRewind();
+        if (!RewardsManager.isChoosingReward && !GameManager.isPaused)
+        {
+            if (Input.GetKeyDown(KeyCode.F) && !isRewinding && (rewindCooldownRemaining) < 0)
+                StartRewind();
+        }
     }
 
     void FixedUpdate()
@@ -103,12 +106,15 @@ public partial class PlayerRewind : MonoBehaviour
 
         if (health - hp.currentHealth > 0)
         {
-            hp.RestoreHealth(health - hp.currentHealth);
+            hp.RestoreHealth((health - hp.currentHealth));
         }
+
+        hp.RestoreHealth(playerStats.healOnRewind);
 
         if (playerShooter.currentGun != null)
         {
             playerShooter.currentAmmo = playerShooter.maxAmmo;
+            playerShooter.currentGun.currentAmmo = playerShooter.maxAmmo;
             PlayerShooter.OnAmmoChanged?.Invoke(playerShooter.AmmoCount);
         }
     }

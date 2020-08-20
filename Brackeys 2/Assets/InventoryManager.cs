@@ -32,6 +32,7 @@ public class InventoryManager : MonoBehaviour
             if(guns[i] == newGun)
             {
                 inventoryPanel.transform.GetChild(i + 1).gameObject.SetActive(true);
+                newGun.currentAmmo = Mathf.RoundToInt(newGun.baseAmmo * playerShooter.playerStats.magazineMultiplier);
                 SelectGun(i + 1);
                 return;
             }

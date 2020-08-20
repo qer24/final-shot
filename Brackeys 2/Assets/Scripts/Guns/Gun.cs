@@ -29,6 +29,5 @@ public class Gun : ScriptableObject
 
     public AnimationCurve damageFalloffCurve = AnimationCurve.Constant(0, 1, 1);
 
-    [HideInInspector]
     public int currentAmmo;
 }
