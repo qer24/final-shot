@@ -825,6 +825,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 6628161564025731567, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.703125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628161564025731567, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -57.039062
+      objectReference: {fileID: 0}
     - target: {fileID: 8700426955035830630, guid: 5de05084dfdcce44caab1bc444c9ce39,
         type: 3}
       propertyPath: m_IsActive
@@ -1952,7 +1962,7 @@ PrefabInstance:
     - target: {fileID: 4363419444461432324, guid: 26ade3a697242da46a572aec14b83d63,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: 4363419444461432324, guid: 26ade3a697242da46a572aec14b83d63,
         type: 3}
@@ -3320,8 +3330,8 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_OverrideVoxelSize: 1
+  m_VoxelSize: 0.08
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 45004de78bfdd6444a4af3267fbc9359, type: 2}
 --- !u!4 &2027026845

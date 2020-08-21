@@ -1992,6 +1992,11 @@ PrefabInstance:
       propertyPath: minEnemies
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8700426955291792177, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8700426955317942373, guid: 5de05084dfdcce44caab1bc444c9ce39,
         type: 3}
       propertyPath: m_IsActive

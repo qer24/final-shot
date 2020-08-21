@@ -49,6 +49,8 @@ public class PlayerShooter : MonoBehaviour
 
     public string AmmoCount { get => $"{currentAmmo}/{maxAmmo}"; }
 
+    public int rewindBonusDamageBullets = 0;
+
     private void Start()
     {
         startRotation = gunPivot.localRotation;
@@ -228,11 +230,12 @@ public class PlayerShooter : MonoBehaviour
         currentGun.currentAmmo = currentAmmo;
         OnAmmoChanged?.Invoke(AmmoCount);
 
-        float damage = CalculateDamage();
         int bullets = currentGun.bullets + (Random.value <= 0.1f ? playerStats.additionalProjectiles : 0);
 
         for (int i = 0; i < bullets; i++)
         {
+            float damage = CalculateDamage();
+
             Vector3 gunRecoil = new Vector3(
                 Random.Range(-currentGun.maxRecoil, currentGun.maxRecoil),
                 Random.Range(-currentGun.maxRecoil, currentGun.maxRecoil),
@@ -270,11 +273,11 @@ public class PlayerShooter : MonoBehaviour
 
                     if (hit.distance < 100f && hit.distance > 0.5f)
                     {
-                        Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - shootPoint.position, hit.point);
+                        Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - shootPoint.position, hit.point, shootPoint.position);
                     }
                 }else
                 {
-                    Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f));
+                    Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f), shootPoint.position);
                 }
             }else
             {
@@ -335,11 +338,23 @@ public class PlayerShooter : MonoBehaviour
 
     private float CalculateDamage()
     {
+        float damage;
+
         if(Random.Range(0.00f, 1.00f) <= playerStats.chanceToDoubleDamage * 0.01f)
         {
-            return currentGun.damage * playerStats.damageMultiplier * 2;
+            damage = currentGun.damage * playerStats.damageMultiplier * 2;
+        }else
+        {
+            damage = currentGun.damage * playerStats.damageMultiplier;
         }
-        return currentGun.damage * playerStats.damageMultiplier;
+
+        if(rewindBonusDamageBullets > 0)
+        {
+            rewindBonusDamageBullets--;
+            damage *= 1.5f;
+        }
+
+        return damage;
     }
 
     void UpdateStats()

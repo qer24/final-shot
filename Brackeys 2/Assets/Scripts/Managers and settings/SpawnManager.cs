@@ -70,10 +70,6 @@ public class SpawnManager : MonoBehaviour
     {
         spawnedBoss = false;
         currentWave++;
-        if (currentWave % 10 == 0)
-        {
-            wavesUntilNextReward++;
-        }
         if(currentWave % wavesUntilNextReward == 1 && currentWave != 1)
         {
             rewardsManager.DisplayRewards();

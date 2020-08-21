@@ -15,8 +15,8 @@ MonoBehaviour:
   transform: {fileID: 0}
   pickupScript: {fileID: 0}
   shootSound: shootPistol
-  shootCooldown: 0.3
-  damage: 27
+  shootCooldown: 0.25
+  damage: 20
   baseAmmo: 20
   bulletSpeed: 20
   holdToFire: 0
@@ -71,4 +71,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  currentAmmo: 4
+  currentAmmo: 0

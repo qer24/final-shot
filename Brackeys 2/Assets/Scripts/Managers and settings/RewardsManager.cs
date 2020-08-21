@@ -31,10 +31,11 @@ public class RewardsManager : MonoBehaviour
     string healRewardString = "Restore 4 health after rewind";
     string firerateRewardString = "+5% fire rate";
     string rewindRewardString = "-0.5s to rewind cooldown";
-    string doubleDamageRewardString = "+2% to deal double damage";
+    string doubleDamageRewardString = "+2% chance to deal double damage";
     string projectileRewardString { get => $"10% chance to fire +{playerStats.additionalProjectiles + 1} bullet{(playerStats.additionalProjectiles > 0 ? 's' : char.MinValue)}"; }
     string graceOnHitRewardString = "+0.1s immunity after getting hit";
     string graceOnRewindRewardString = "+0.5s immunity after rewind";
+    string bonusDamageOnRewindString { get => $"After rewind, 150% damage for {playerStats.bonusBulletsOnRewind + 1} bullet{(playerStats.bonusBulletsOnRewind > 0 ? 's' : char.MinValue)}"; }
 
     int currentReward = 0;
 
@@ -80,6 +81,16 @@ public class RewardsManager : MonoBehaviour
         playerStats.additionalProjectiles = 0;
         playerStats.graceOnHit = 0.3f;
         playerStats.graceOnRewind = 0f;
+        playerStats.bonusBulletsOnRewind = 0;
+
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            DisplayRewards();
+        }
     }
 
     public void DisplayRewards()
@@ -236,29 +247,44 @@ public class RewardsManager : MonoBehaviour
         ResumeGameplay();
     }
 
+    void IncreaseBonusBulletsOnRewind()
+    {
+        playerStats.bonusBulletsOnRewind += 1;
+        playerStats.onStatsChanged?.Invoke();
+
+        ResumeGameplay();
+    }
+
     List<Reward> RandomRewards()
     {
         List<Reward> rewards = new List<Reward>();
         List<int> takenIndexes = new List<int>();
 
         bool guaranteedGunGotten = false;
+        int iterations = 0;
         while (rewards.Count < 3)
         {
-            int randomIndex = Random.Range(1, 12);
+            Action methodToCall;
+            int randomIndex = Random.Range(1, 13);
             if (currentReward % 3 == 0 && !guaranteedGunGotten)
             {
                 guaranteedGunGotten = true;
                 randomIndex = 2;
             }else
             {
-                while(takenIndexes.Contains(randomIndex))
+                while(takenIndexes.Contains(randomIndex) || (randomIndex == 5 && currentReward < 5)) //cant roll heal on rewind until reward 5
                 {
-                    randomIndex = Random.Range(1, 12);
+                    iterations++;
+                    if (iterations > 100)
+                    {
+                        randomIndex = 4;
+                        break;
+                    }
+                    randomIndex = Random.Range(1, 13);
                 }
             }
             takenIndexes.Add(randomIndex);
 
-            Action methodToCall;
             if (randomIndex == 1 && playerStats.speedMultiplier < maxMoveSpeed)
             {
                 rewards.Add(new Reward(moveSpeedRewardString, methodToCall = IncreaseMoveSpeed));
@@ -304,6 +330,10 @@ public class RewardsManager : MonoBehaviour
             else if (randomIndex == 11 && playerStats.graceOnRewind < 1f)
             {
                 rewards.Add(new Reward(graceOnRewindRewardString, methodToCall = IncreaseGraceOnRewind));
+            }
+            else if (randomIndex == 12 && playerStats.bonusBulletsOnRewind < 3)
+            {
+                rewards.Add(new Reward(bonusDamageOnRewindString, methodToCall = IncreaseBonusBulletsOnRewind));
             }
         }
 

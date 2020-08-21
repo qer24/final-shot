@@ -16,7 +16,7 @@ MonoBehaviour:
   pickupScript: {fileID: 0}
   shootSound: shootRifle
   shootCooldown: 0.2
-  damage: 30
+  damage: 25
   baseAmmo: 30
   bulletSpeed: 60
   holdToFire: 1

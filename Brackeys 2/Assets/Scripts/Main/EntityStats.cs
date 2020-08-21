@@ -20,6 +20,7 @@ public class EntityStats : ScriptableObject
     public int additionalProjectiles = 0;
     public float graceOnHit = 0.3f;
     public float graceOnRewind = 0f;
+    public int bonusBulletsOnRewind = 0;
 
     public Action onStatsChanged;
 }

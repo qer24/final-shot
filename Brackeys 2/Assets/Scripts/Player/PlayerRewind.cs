@@ -114,6 +114,8 @@ public partial class PlayerRewind : MonoBehaviour
 
         grace.AddGrace(playerStats.graceOnRewind);
 
+        playerShooter.rewindBonusDamageBullets += playerStats.bonusBulletsOnRewind;
+
         if (playerShooter.currentGun != null)
         {
             playerShooter.currentAmmo = playerShooter.maxAmmo;
