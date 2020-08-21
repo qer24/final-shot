@@ -16,7 +16,7 @@ MonoBehaviour:
   pickupScript: {fileID: 0}
   shootSound: shootSMG
   shootCooldown: 0.1
-  damage: 20
+  damage: 15
   baseAmmo: 60
   bulletSpeed: 40
   holdToFire: 1

@@ -29,7 +29,7 @@ public class RewindCooldownCounter : MonoBehaviour
         {
             text.enabled = true;
             image.color = disabledColor;
-            text.text = Mathf.Ceil(PlayerRewind.rewindCooldownRemaining).ToString();
+            text.text = PlayerRewind.rewindCooldownRemaining.ToString("F1");
         }
     }   
 }

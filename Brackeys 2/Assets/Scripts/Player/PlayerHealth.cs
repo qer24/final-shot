@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public EntityStats playerStats;
+
     public Health hp;
 
     public delegate void HealthAction(float currentHealth);

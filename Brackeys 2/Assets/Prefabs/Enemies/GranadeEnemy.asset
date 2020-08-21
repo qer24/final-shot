@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: GranadeEnemy
   m_EditorClassIdentifier: 
   maxHealth: 150
-  damage: 30
+  damage: 25
   damageMultiplier: 1
   speedMultiplier: 1
   magazineMultiplier: 0
+  fireRateMultiplier: 1
+  rewindCooldownReduction: 0
+  healOnRewind: 0
+  chanceToDoubleDamage: 0
+  additionalProjectiles: 0
+  graceOnHit: 0.3
+  graceOnRewind: 0

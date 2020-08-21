@@ -18,6 +18,8 @@ public class EntityStats : ScriptableObject
     public float healOnRewind = 0;
     public float chanceToDoubleDamage = 0;
     public int additionalProjectiles = 0;
+    public float graceOnHit = 0.3f;
+    public float graceOnRewind = 0f;
 
     public Action onStatsChanged;
 }

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637324809821137904
+  lastModified: 637335737496555134
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Music.bank
   SubDir: 
-  lastModified: 637324809821488223
+  lastModified: 637335737540905410
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -310,6 +310,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 125
+--- !u!114 &-2501273197401218084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-452239480932945355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +371,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 40
   Length: 1406
 --- !u!114 &-16845623747140385
 MonoBehaviour:
@@ -428,12 +445,12 @@ MonoBehaviour:
   - {fileID: 8700750890271966681}
   - {fileID: 170710971625595576}
   EditorParameters:
-  - {fileID: -5950184308171570336}
+  - {fileID: -2501273197401218084}
   MasterBanks:
   - {fileID: 5502800550547104755}
   StringsBanks:
   - {fileID: -5654696402905901759}
-  stringsBankWriteTime: 637324809821137904
+  stringsBankWriteTime: 637335737496555134
   cacheVersion: 3
 --- !u!114 &170710971625595576
 MonoBehaviour:
@@ -725,7 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637324809821057828
+  lastModified: 637335737496485075
   LoadResult: 0
   FileSizes:
   - Name: Desktop

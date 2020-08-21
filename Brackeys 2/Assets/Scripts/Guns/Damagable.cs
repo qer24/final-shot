@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
+using System;
 
 public interface IDamagable
 {
@@ -17,6 +18,8 @@ public class Damagable : MonoBehaviour, IDamagable
     public bool IsCrit { get; set; }
     public bool isPlayer = false;
 
+    public Action OnTakeDamage;
+
     public virtual void Start()
     {
         IsCrit = false;
@@ -25,6 +28,9 @@ public class Damagable : MonoBehaviour, IDamagable
     public virtual void TakeDamage(float amount)
     {
         if (hp.isDead) return;
+        if (!enabled) return;
+
+        OnTakeDamage?.Invoke();
 
         hp.RemoveHealth(amount);
         if(!isPlayer)

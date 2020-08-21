@@ -5659,7 +5659,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 26
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -8369,7 +8369,7 @@ MonoBehaviour:
   rewardPanel: {fileID: 8700426955787678447}
   rewardsText: {fileID: 8700426956527578849}
   maxMoveSpeed: 1.5
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 1798301345553498179}
   droppableGuns:
   - {fileID: 4101701848491605591, guid: 35dff7ce08316f94f839faf3eb0ba1af, type: 3}
   - {fileID: 4563756564258855021, guid: 1634c327f09f385469e2d590fffa3839, type: 3}
@@ -9118,7 +9118,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 26
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -9612,12 +9612,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28.5
+  m_fontSize: 26
   m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 26
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0

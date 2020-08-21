@@ -28,13 +28,17 @@ public class RewardsManager : MonoBehaviour
     string newWeaponRewardString = "New weapon: ";
     string magSizeRewardString = "+10% magazine size";
     string damageRewardString = "+10% damage";
-    string healRewardString = "Restore 5 health after rewind";
+    string healRewardString = "Restore 4 health after rewind";
     string firerateRewardString = "+5% fire rate";
     string rewindRewardString = "-0.5s to rewind cooldown";
     string doubleDamageRewardString = "+2% to deal double damage";
-    string additionalProjectileRewardString { get => $"10% chance to fire +{playerStats.additionalProjectiles + 1} bullet"; }
+    string projectileRewardString { get => $"10% chance to fire +{playerStats.additionalProjectiles + 1} bullet{(playerStats.additionalProjectiles > 0 ? 's' : char.MinValue)}"; }
+    string graceOnHitRewardString = "+0.1s immunity after getting hit";
+    string graceOnRewindRewardString = "+0.5s immunity after rewind";
 
     int currentReward = 0;
+
+    public static Action OnRewardChosen;
 
     public InventoryManager inventoryManager;
 
@@ -74,6 +78,8 @@ public class RewardsManager : MonoBehaviour
         playerStats.healOnRewind = 0;
         playerStats.chanceToDoubleDamage = 0;
         playerStats.additionalProjectiles = 0;
+        playerStats.graceOnHit = 0.3f;
+        playerStats.graceOnRewind = 0f;
     }
 
     public void DisplayRewards()
@@ -127,6 +133,8 @@ public class RewardsManager : MonoBehaviour
 
     void ResumeGameplay()
     {
+        OnRewardChosen?.Invoke();
+
         rewardPanel.SetActive(false);
 
         isChoosingReward = false;
@@ -162,7 +170,7 @@ public class RewardsManager : MonoBehaviour
 
     void IncreaseHealOnRewind()
     {
-        playerStats.healOnRewind += 5;
+        playerStats.healOnRewind += 4;
         playerStats.onStatsChanged?.Invoke();
 
         ResumeGameplay();
@@ -212,6 +220,22 @@ public class RewardsManager : MonoBehaviour
         ResumeGameplay();
     }
 
+    void IncreaseGraceOnHit()
+    {
+        playerStats.graceOnHit += 0.1f;
+        playerStats.onStatsChanged?.Invoke();
+
+        ResumeGameplay();
+    }
+
+    void IncreaseGraceOnRewind()
+    {
+        playerStats.graceOnRewind += 0.5f;
+        playerStats.onStatsChanged?.Invoke();
+
+        ResumeGameplay();
+    }
+
     List<Reward> RandomRewards()
     {
         List<Reward> rewards = new List<Reward>();
@@ -220,7 +244,7 @@ public class RewardsManager : MonoBehaviour
         bool guaranteedGunGotten = false;
         while (rewards.Count < 3)
         {
-            int randomIndex = Random.Range(1, 10);
+            int randomIndex = Random.Range(1, 12);
             if (currentReward % 3 == 0 && !guaranteedGunGotten)
             {
                 guaranteedGunGotten = true;
@@ -229,57 +253,57 @@ public class RewardsManager : MonoBehaviour
             {
                 while(takenIndexes.Contains(randomIndex))
                 {
-                    randomIndex = Random.Range(1, 10);
+                    randomIndex = Random.Range(1, 12);
                 }
             }
             takenIndexes.Add(randomIndex);
 
+            Action methodToCall;
             if (randomIndex == 1 && playerStats.speedMultiplier < maxMoveSpeed)
             {
-                Action methodToCall;
                 rewards.Add(new Reward(moveSpeedRewardString, methodToCall = IncreaseMoveSpeed));
             }
             else if (randomIndex == 2 && droppableGuns.Count > 0)
             {
                 GunPickup droppedGun = droppableGuns[0];
                 string message = newWeaponRewardString + droppedGun.name;
-                Action methodToCall;
                 rewards.Add(new Reward(message, methodToCall = DropWeapon));
             }
             else if (randomIndex == 3)
             {
-                Action methodToCall;
                 rewards.Add(new Reward(magSizeRewardString, methodToCall = IncreaseMagSize));
             }
             else if (randomIndex == 4)
             {
-                Action methodToCall;
                 rewards.Add(new Reward(damageRewardString, methodToCall = IncreaseDamage));
             }
             else if (randomIndex == 5 && playerStats.healOnRewind == 0)
             {
-                Action methodToCall;
                 rewards.Add(new Reward(healRewardString, methodToCall = IncreaseHealOnRewind));
             }
             else if (randomIndex == 6 && playerStats.fireRateMultiplier > 0.5f)
             {
-                Action methodToCall;
                 rewards.Add(new Reward(firerateRewardString, methodToCall = IncreaseFirerate));
             }
             else if (randomIndex == 7 && playerStats.rewindCooldownReduction < 1f)
             {
-                Action methodToCall;
                 rewards.Add(new Reward(rewindRewardString, methodToCall = ReduceRewindCooldown));
             }
             else if (randomIndex == 8 && playerStats.chanceToDoubleDamage < 8)
             {
-                Action methodToCall;
                 rewards.Add(new Reward(doubleDamageRewardString, methodToCall = IncreaseDoubleDamageChance));
             }
             else if (randomIndex == 9 && playerStats.additionalProjectiles < 2)
             {
-                Action methodToCall;
-                rewards.Add(new Reward(additionalProjectileRewardString, methodToCall = IncreaseAdditionalProjectiles));
+                rewards.Add(new Reward(projectileRewardString, methodToCall = IncreaseAdditionalProjectiles));
+            }
+            else if (randomIndex == 10 && playerStats.graceOnHit < 0.5f)
+            {
+                rewards.Add(new Reward(graceOnHitRewardString, methodToCall = IncreaseGraceOnHit));
+            }
+            else if (randomIndex == 11 && playerStats.graceOnRewind < 1f)
+            {
+                rewards.Add(new Reward(graceOnRewindRewardString, methodToCall = IncreaseGraceOnRewind));
             }
         }
 

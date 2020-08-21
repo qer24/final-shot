@@ -12,6 +12,7 @@ public partial class PlayerRewind : MonoBehaviour
     public PlayerShooter playerShooter;
     public CharacterController characterController;
     public Damagable damagable;
+    public PlayerGrace grace;
 
     List<PlayerPointInTime> pointsInTime;
     public static bool isRewinding = false;
@@ -110,6 +111,8 @@ public partial class PlayerRewind : MonoBehaviour
         }
 
         hp.RestoreHealth(playerStats.healOnRewind);
+
+        grace.AddGrace(playerStats.graceOnRewind);
 
         if (playerShooter.currentGun != null)
         {

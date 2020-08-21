@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 4363419443335290273}
   - component: {fileID: 4363419443335290272}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: MinimapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5451,7 +5451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 0
-  m_RequiresDepthTextureOption: 2
+  m_RequiresDepthTextureOption: 1
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras:
@@ -5499,6 +5499,7 @@ GameObject:
   - component: {fileID: 4363419444461432346}
   - component: {fileID: 4363419444461432345}
   - component: {fileID: 4363419444461432347}
+  - component: {fileID: 1480337950}
   m_Layer: 14
   m_Name: Player
   m_TagString: Player
@@ -5712,6 +5713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df86bbebe3f3f34478eeb177ee726b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: f15d76259b61b3c419b48bc8e93bc9ff, type: 2}
   hp: {fileID: 4363419444461432344}
 --- !u!114 &4363419444461432347
 MonoBehaviour:
@@ -5731,7 +5733,22 @@ MonoBehaviour:
   playerShooter: {fileID: 4363419444461432327}
   characterController: {fileID: 4363419444461432325}
   damagable: {fileID: 4363419444461432346}
+  grace: {fileID: 1480337950}
   rewindCooldown: 6
+--- !u!114 &1480337950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363419444461432323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f557a851b16a1d54d87e5051ad569e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: f15d76259b61b3c419b48bc8e93bc9ff, type: 2}
+  damagable: {fileID: 4363419444461432346}
 --- !u!1 &4363419444648395278
 GameObject:
   m_ObjectHideFlags: 0
