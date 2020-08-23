@@ -19,6 +19,8 @@ public partial class PlayerRewind : MonoBehaviour
     public float rewindCooldown;
     public static float rewindCooldownRemaining;
 
+    public static bool isTargetable = true;
+
     int currentFrame;
     float health;
 
@@ -27,6 +29,8 @@ public partial class PlayerRewind : MonoBehaviour
         pointsInTime = new List<PlayerPointInTime>();
         rewindCooldownRemaining = rewindCooldown;
         currentFrame = 1;
+
+        isTargetable = true;
     }
 
     void Update()
@@ -89,6 +93,7 @@ public partial class PlayerRewind : MonoBehaviour
 
         rewindCooldownRemaining = rewindCooldown - playerStats.rewindCooldownReduction;
         isRewinding = true;
+        isTargetable = false;
 
         //playerShooter.enabled = false;
         //playerController.enabled = false;
@@ -122,5 +127,12 @@ public partial class PlayerRewind : MonoBehaviour
             playerShooter.currentGun.currentAmmo = playerShooter.maxAmmo;
             PlayerShooter.OnAmmoChanged?.Invoke(playerShooter.AmmoCount);
         }
+
+        Invoke(nameof(BecomeTargetable), 0.3f);
+    }
+
+    void BecomeTargetable()
+    {
+        isTargetable = true;
     }
 }

@@ -79,7 +79,7 @@ public class RewardsManager : MonoBehaviour
         playerStats.healOnRewind = 0;
         playerStats.chanceToDoubleDamage = 0;
         playerStats.additionalProjectiles = 0;
-        playerStats.graceOnHit = 0.3f;
+        playerStats.graceOnHit = 0.2f;
         playerStats.graceOnRewind = 0f;
         playerStats.bonusBulletsOnRewind = 0;
 
