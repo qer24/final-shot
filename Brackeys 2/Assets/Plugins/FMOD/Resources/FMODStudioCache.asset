@@ -115,6 +115,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 682
+--- !u!114 &-6517427596387642311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-6026530666522597423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,11 +209,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637336230230411460
+  lastModified: 637337977073885064
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2270
+    Value: 2308
   Exists: 1
 --- !u!114 &-4563169152765844747
 MonoBehaviour:
@@ -281,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Music.bank
   SubDir: 
-  lastModified: 637335737540905410
+  lastModified: 637337977074225375
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -350,6 +367,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1300
+--- !u!114 &-265260286851463587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-50629935913344124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,13 +478,14 @@ MonoBehaviour:
   - {fileID: 2452200599574093150}
   - {fileID: 8700750890271966681}
   - {fileID: 170710971625595576}
+  - {fileID: 3206700460984759715}
   EditorParameters:
-  - {fileID: 4308612195357639674}
+  - {fileID: 5070000348239453666}
   MasterBanks:
   - {fileID: 5502800550547104755}
   StringsBanks:
   - {fileID: -5654696402905901759}
-  stringsBankWriteTime: 637336230230411460
+  stringsBankWriteTime: 637337977073885064
   cacheVersion: 3
 --- !u!114 &170710971625595576
 MonoBehaviour:
@@ -475,6 +510,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 42997
+--- !u!114 &479937645586244756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &765714503159397372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +550,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 107
+--- !u!114 &1170377815340220673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &1429418523880262641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +682,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2234
+--- !u!114 &3206700460984759715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/enemyAmbient
+  m_EditorClassIdentifier: 
+  Path: event:/enemyAmbient
+  guid: 68ccb59db21ec84189e9413153b76c28
+  Banks:
+  - {fileID: 5502800550547104755}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 4
+  MaxDistance: 15
+  Length: 19000
 --- !u!114 &3489301277001930390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +728,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 897
+--- !u!114 &3547922220022430634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3678503328854121121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +784,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &4360342785652495127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,6 +854,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 188
+--- !u!114 &5070000348239453666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &5502800550547104755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,11 +885,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637336230230321364
+  lastModified: 637337977073815000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 497632
+    Value: 655104
   Exists: 1
 --- !u!114 &6935477608780443376
 MonoBehaviour:

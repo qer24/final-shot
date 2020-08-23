@@ -12,6 +12,8 @@ public class RagdollDeath : Death
     [SerializeField] Collider playerCollider = null;
     [SerializeField] FlowMachine ai = null;
     [SerializeField] MonoBehaviour monoAi = null;
+    [SerializeField] GameObject ambientSound = null;
+    [SerializeField] SkinnedMeshRenderer rend = null;
 
     Rigidbody[] ragdollBodies;
     List<Collider> ragdollColliders;
@@ -52,6 +54,26 @@ public class RagdollDeath : Death
         }
 
         Invoke(nameof(DisableColliders), 5f);
+        if(CorpseCleanupSettings.cleanupCorpses && gameObject.activeSelf)
+        {
+            StartCoroutine(TryCleanup());
+        }
+    }
+
+    IEnumerator TryCleanup()
+    {
+        yield return new WaitForSeconds(4.5f);
+
+        while(rend.isVisible)
+        {
+            yield return new WaitForSeconds(0.5f);
+            if(!CorpseCleanupSettings.cleanupCorpses)
+            {
+                yield break;
+            }
+        }
+
+        Destroy(gameObject);
     }
 
     void DisableColliders()
@@ -71,6 +93,7 @@ public class RagdollDeath : Death
         mainCollider.enabled = !state;
         playerCollider.enabled = !state;
         headshotCollider.enabled = !state;
+        ambientSound.SetActive(!state);
         if (ai)
             ai.enabled = !state;
         if (monoAi)

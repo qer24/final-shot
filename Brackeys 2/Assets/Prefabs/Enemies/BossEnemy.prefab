@@ -883,6 +883,7 @@ Transform:
   - {fileID: 2904389423878090526}
   - {fileID: 9207777932610031812}
   - {fileID: 875330355}
+  - {fileID: 8008977222677308932}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 92.09, z: 0}
@@ -942,6 +943,8 @@ MonoBehaviour:
   playerCollider: {fileID: 3292240913395176230}
   ai: {fileID: 0}
   monoAi: {fileID: 5650525390813688168}
+  ambientSound: {fileID: 5408806917535018372}
+  rend: {fileID: 6843932765046039141}
   hitDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &5534966236406402072
 MonoBehaviour:
@@ -973,6 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 0004a9bd5c22d89408be21acff286c20, type: 2}
   currentHealth: 0
+  isDead: 0
 --- !u!114 &4870990542608373410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2223,6 +2227,60 @@ Transform:
   m_Father: {fileID: 1670630282042829714}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5408806917535018372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8008977222677308932}
+  - component: {fileID: 8634149621249613734}
+  m_Layer: 10
+  m_Name: AmbientSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8008977222677308932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5408806917535018372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.25, y: 0, z: 0}
+  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_Children: []
+  m_Father: {fileID: 2904961007873149}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8634149621249613734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5408806917535018372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/enemyAmbient
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5531896748782885120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,6 +2529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03b4dfdd18b9f14a9a5ff79465a997e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useOldBillboard: 1
+  lookRot: {x: 0, y: 0, z: 1}
+  axisMultiplier: {x: 1, y: 1, z: 1}
 --- !u!1 &5717414039287075348
 GameObject:
   m_ObjectHideFlags: 0

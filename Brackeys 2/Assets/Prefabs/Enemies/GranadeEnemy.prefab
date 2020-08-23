@@ -6285,6 +6285,60 @@ Transform:
   m_Father: {fileID: 4337046174615267355}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4440426399560958324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890069109347991839}
+  - component: {fileID: 503422889888003961}
+  m_Layer: 10
+  m_Name: AmbientSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1890069109347991839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440426399560958324}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.25, y: 0, z: 0}
+  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_Children: []
+  m_Father: {fileID: 6378314764616280365}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503422889888003961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440426399560958324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/enemyAmbient
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5104747923879693481
 GameObject:
   m_ObjectHideFlags: 0
@@ -6621,6 +6675,7 @@ Transform:
   - {fileID: 1500826434088421817}
   - {fileID: 7279231808911628606}
   - {fileID: 8124625381841398350}
+  - {fileID: 1890069109347991839}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6680,6 +6735,8 @@ MonoBehaviour:
   playerCollider: {fileID: 8448298652581860982}
   ai: {fileID: 0}
   monoAi: {fileID: 6039190556987716502}
+  ambientSound: {fileID: 4440426399560958324}
+  rend: {fileID: 465148261747468085}
   hitDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1467653411916220744
 MonoBehaviour:
@@ -7845,15 +7902,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cc34359e3b2a0242b1dff526f8f4123, type: 3}
---- !u!4 &7279231808911628606 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5cc34359e3b2a0242b1dff526f8f4123,
-    type: 3}
-  m_PrefabInstance: {fileID: 7102105960710913749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7948526167895999364 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5cc34359e3b2a0242b1dff526f8f4123,
+    type: 3}
+  m_PrefabInstance: {fileID: 7102105960710913749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7279231808911628606 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5cc34359e3b2a0242b1dff526f8f4123,
     type: 3}
   m_PrefabInstance: {fileID: 7102105960710913749}
   m_PrefabAsset: {fileID: 0}

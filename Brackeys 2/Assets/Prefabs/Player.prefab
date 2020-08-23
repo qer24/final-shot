@@ -5451,7 +5451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 0
-  m_RequiresDepthTextureOption: 1
+  m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras:
@@ -5549,11 +5549,10 @@ MonoBehaviour:
   crouchPivot: {fileID: 4363419443689544508}
   normalHeight: 2
   crouchHeight: 1.5
-  crouchSlowdown: 0.6
+  crouchSlowdown: 0.8
   crouchOffset: {x: 0, y: -0.5, z: 0}
   slideTimeAfterRun: 0.5
   slideSpeedUp: 15
-  slideSlowdown: 1
   slideCooldown: 1
   slideParticles: {fileID: 4363419444004000256}
   slideSpeedlines: {fileID: 4363419444866724212}
@@ -5649,6 +5648,8 @@ MonoBehaviour:
   bullet: {fileID: 2847904816663271754, guid: 16e0b2ef0fc8734478a90e665ed5f762, type: 3}
   bulletHole: {fileID: 4929977449947337, guid: a0fde4e04b637564c8fcc30deec66d95, type: 3}
   bulletTrace: {fileID: 3003534751203635757, guid: 7d4f9c4df0377a449ac2f2c00f26090d,
+    type: 3}
+  enemyHitParticles: {fileID: 5794444470983031198, guid: 2c111d702a323464ab96fc101935e3ff,
     type: 3}
   maxAmmo: 0
   currentAmmo: 0

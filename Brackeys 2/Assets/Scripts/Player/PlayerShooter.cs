@@ -31,6 +31,7 @@ public class PlayerShooter : MonoBehaviour
     public Bullet bullet;
     public BulletHole bulletHole;
     public BulletTrace bulletTrace;
+    public GameObject enemyHitParticles;
 
     Crosshair crosshair;
 
@@ -265,7 +266,10 @@ public class PlayerShooter : MonoBehaviour
                             float falloffDamageMulti = currentGun.damageFalloffCurve.Evaluate(hit.distance);
                             damagable.TakeDamage(damage * falloffDamageMulti);
                         }
-                    }else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
+
+                        Instantiate(enemyHitParticles, hit.point - (hit.normal * 0.025f), Quaternion.identity).transform.LookAt(transform.position);
+                    }
+                    else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
                     {
                         AudioManager.Play("wallImpact", hit.point);
                         Instantiate(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity).transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);

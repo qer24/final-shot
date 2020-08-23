@@ -1006,6 +1006,7 @@ Transform:
   - {fileID: 7845539290012231756}
   - {fileID: 2103729790768986315}
   - {fileID: 645284025582259131}
+  - {fileID: 4392759372888326293}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1065,6 +1066,8 @@ MonoBehaviour:
   playerCollider: {fileID: 939729528888653699}
   ai: {fileID: 0}
   monoAi: {fileID: 3169256550622728801}
+  ambientSound: {fileID: 7943041702185993586}
+  rend: {fileID: 9097407840947979968}
   hitDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &7812288339846883517
 MonoBehaviour:
@@ -2408,6 +2411,60 @@ Transform:
   m_Father: {fileID: 4508018638566215931}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7943041702185993586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4392759372888326293}
+  - component: {fileID: 43828525778072123}
+  m_Layer: 10
+  m_Name: AmbientSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4392759372888326293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943041702185993586}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.25, y: 0, z: 0}
+  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_Children: []
+  m_Father: {fileID: 2355565837265586392}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43828525778072123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943041702185993586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/enemyAmbient
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8062183764723152561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,15 +3063,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 036d19f25e2bd6b47a5f2b6bfaacb02a, type: 3}
---- !u!1 &6134510676259177275 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 036d19f25e2bd6b47a5f2b6bfaacb02a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6477092314736508522}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6803241776945912193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 036d19f25e2bd6b47a5f2b6bfaacb02a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6477092314736508522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6134510676259177275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 036d19f25e2bd6b47a5f2b6bfaacb02a,
     type: 3}
   m_PrefabInstance: {fileID: 6477092314736508522}
   m_PrefabAsset: {fileID: 0}
