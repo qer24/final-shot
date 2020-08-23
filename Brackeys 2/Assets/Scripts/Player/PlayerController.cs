@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     public float slideTimeAfterRun = 0.5f;
     public float slideSpeedUp;
-    public float slideSlowdown;
     public float slideCooldown = 2f;
     public ParticleSystem slideParticles;
     public ParticleSystem slideSpeedlines;
@@ -53,6 +52,7 @@ public class PlayerController : MonoBehaviour
     float nextStep;
 
     public bool isCrouching;
+    bool wasCrouching;
     public bool isSliding;
     bool slideFovBoost;
     float slideTimer;
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
         // Press Left Shift to run
         isRunning = Input.GetKey(KeyCode.LeftShift);
-        isCrouching = Input.GetKey(KeyCode.LeftControl);
+        isCrouching = Input.GetKey(KeyCode.C);
 
         if (isRunning)
         {
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (!isSliding && isCrouching && slideTimer > 0 && slideCooldownTimer <= 0)
+        if (!isSliding && isCrouching && !wasCrouching && slideTimer > 0 && slideCooldownTimer <= 0)
         {
             slideTimer = 0;
             StartCoroutine(nameof(Slide));
@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, Time.deltaTime * 8f);
 
         float speed = isSliding ? currentSlideSpeed : canMove ? (isRunning ? runningSpeed : walkingSpeed) : 0;
+        speed = !isSliding && isCrouching ? walkingSpeed * crouchSlowdown : speed;
         speed = PlayerRewind.isRewinding ? 0 : speed;
         speed *= playerStats.speedMultiplier;
 
@@ -183,6 +184,7 @@ public class PlayerController : MonoBehaviour
         }
 
         previouslyGrounded = characterController.isGrounded;
+        wasCrouching = isCrouching;
     }
 
     private void CancelSlide()
@@ -234,14 +236,13 @@ public class PlayerController : MonoBehaviour
         emision = slideSpeedlines.emission;
         emision.rateOverDistance = 0f;
 
+        slideTargetSpeed = walkingSpeed * crouchSlowdown;
+
         if (characterController.isGrounded)
         {
-
-            slideTargetSpeed = slideSlowdown;
-
             slideFovBoost = false;
 
-            while (Mathf.Abs(currentSlideSpeed - slideTargetSpeed) > 0.1f)
+            while (Mathf.Abs(currentSlideSpeed - slideTargetSpeed) > 0.5f)
             {
                 currentSlideSpeed = Mathf.Lerp(currentSlideSpeed, slideTargetSpeed, Time.deltaTime * 5f);
                 yield return null;

@@ -37,7 +37,7 @@ public partial class PlayerRewind : MonoBehaviour
     {
         if (!RewardsManager.isChoosingReward && !GameManager.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.F) && !isRewinding && (rewindCooldownRemaining) < 0)
+            if (Input.GetKeyDown(KeyCode.R) && !isRewinding && (rewindCooldownRemaining) < 0)
                 StartRewind();
         }
     }

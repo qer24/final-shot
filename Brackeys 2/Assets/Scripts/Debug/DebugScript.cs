@@ -13,7 +13,7 @@ public class DebugScript : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftControl))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
