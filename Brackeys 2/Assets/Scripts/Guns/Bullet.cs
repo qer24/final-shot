@@ -17,10 +17,17 @@ public class Bullet : MonoBehaviour
 
     public void Init(float damage, Transform owner, Vector3 startingVelocity, bool isEnemy = false)
     {
+        trail.Clear();
+
         this.damage = damage;
         this.owner = owner;
-        GetComponent<Rigidbody>().velocity = startingVelocity;
-        Destroy(gameObject, 4f);
+        rb.velocity = startingVelocity;
+
+        rend.enabled = true;
+        col.enabled = true;
+
+        if (Time.timeSinceLevelLoad > 1f)
+            Lean.Pool.LeanPool.Despawn(gameObject, 4f);
 
         if(isEnemy)
         {
@@ -76,6 +83,6 @@ public class Bullet : MonoBehaviour
 
         yield return new WaitForSeconds(trail.time + 0.1f);
 
-        Destroy(gameObject);
+        Lean.Pool.LeanPool.Despawn(gameObject);
     }
 }

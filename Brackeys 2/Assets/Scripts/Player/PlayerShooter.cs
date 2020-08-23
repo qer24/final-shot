@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using EZCameraShake;
+using Lean.Pool;
 
 public class PlayerShooter : MonoBehaviour
 {
@@ -267,21 +268,21 @@ public class PlayerShooter : MonoBehaviour
                             damagable.TakeDamage(damage * falloffDamageMulti);
                         }
 
-                        Instantiate(enemyHitParticles, hit.point - (hit.normal * 0.025f), Quaternion.identity).transform.LookAt(transform.position);
+                        LeanPool.Spawn(enemyHitParticles, hit.point - (hit.normal * 0.025f), Quaternion.identity).transform.LookAt(transform.position);
                     }
                     else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
                     {
                         AudioManager.Play("wallImpact", hit.point);
-                        Instantiate(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity).transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
+                        LeanPool.Spawn(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity).transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
                     }
 
                     if (hit.distance < 100f && hit.distance > 0.5f)
                     {
-                        Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - shootPoint.position, hit.point, shootPoint.position);
+                        LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - shootPoint.position, hit.point, shootPoint.position);
                     }
                 }else
                 {
-                    Instantiate(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f), shootPoint.position);
+                    LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f), shootPoint.position);
                 }
             }else
             {
@@ -304,7 +305,7 @@ public class PlayerShooter : MonoBehaviour
                     }
                 }
 
-                var projectile = Instantiate(currentGun.projectile, shootPoint.position - shootPoint.transform.forward, Quaternion.identity);
+                var projectile = LeanPool.Spawn(currentGun.projectile, shootPoint.position - shootPoint.transform.forward, Quaternion.identity);
                 //lookPoint += gunRecoil;
                 projectile.transform.LookAt(lookPoint);
                 projectile.transform.Rotate(gunRecoil);
