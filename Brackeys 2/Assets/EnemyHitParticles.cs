@@ -8,10 +8,10 @@ public class EnemyHitParticles : MonoBehaviour
 
     private void OnEnable()
     {
-        if (Time.timeSinceLevelLoad > 10f)
+        if (Time.timeSinceLevelLoad > 1f)
         {
             particles.Play();
-            Lean.Pool.LeanPool.Despawn(gameObject, 1f);
+            Lean.Pool.LeanPool.Despawn(gameObject, 2f);
         }
     }
 }

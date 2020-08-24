@@ -128,7 +128,7 @@ public partial class PlayerRewind : MonoBehaviour
             PlayerShooter.OnAmmoChanged?.Invoke(playerShooter.AmmoCount);
         }
 
-        Invoke(nameof(BecomeTargetable), 0.3f);
+        Invoke(nameof(BecomeTargetable), 0.5f);
     }
 
     void BecomeTargetable()

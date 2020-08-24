@@ -13,7 +13,7 @@ public class RagdollDeath : Death
     [SerializeField] FlowMachine ai = null;
     [SerializeField] MonoBehaviour monoAi = null;
     [SerializeField] GameObject ambientSound = null;
-    [SerializeField] SkinnedMeshRenderer rend = null;
+    [SerializeField] Renderer rend = null;
 
     Rigidbody[] ragdollBodies;
     List<Collider> ragdollColliders;

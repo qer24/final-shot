@@ -160,7 +160,7 @@ public class SniperEnemy : MonoBehaviour
         AudioManager.Play("shootEnemySniper", transform.position);
         anim.SetTrigger("Shoot");
 
-        var newBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+        var newBullet = Lean.Pool.LeanPool.Spawn(bullet, shootPoint.position, shootPoint.rotation);
         newBullet.Init(stats.damage, transform, -newBullet.transform.right * bulletSpeed, true);
     }
 

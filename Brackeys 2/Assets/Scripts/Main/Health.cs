@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public EntityStats stats;
-    [HideInInspector] public float currentHealth = 0;
+    public float currentHealth = 0;
 
     public delegate void HealthAction(float currentHealthAmount);
     public HealthAction OnHealthChanged;

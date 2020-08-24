@@ -137,7 +137,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2106071341048660907}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2106071340946251994
 MonoBehaviour:
@@ -192,7 +192,6 @@ Transform:
   m_Children:
   - {fileID: 2106071340617088855}
   - {fileID: 2106071340943668021}
-  - {fileID: 2106071341153332850}
   - {fileID: 2106071340946251995}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -209,57 +208,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9261935f89c23c0408c0350f938907b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2106071341153332851
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2106071341153332850}
-  - component: {fileID: 2106071341153332849}
-  m_Layer: 0
-  m_Name: BulletHoles
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2106071341153332850
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106071341153332851}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2106071341048660907}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2106071341153332849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106071341153332851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea08375da243a441b88d1e6b0713006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 4929977449947336, guid: a0fde4e04b637564c8fcc30deec66d95, type: 3}
-  Notification: 0
-  Preload: 20
-  Capacity: 0
-  Recycle: 0
-  Persist: 0
-  Stamp: 0
-  Warnings: 1
-  spawnedClonesList: []
-  despawnedClones: []
-  delays: []

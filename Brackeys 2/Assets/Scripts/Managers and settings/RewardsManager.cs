@@ -85,14 +85,6 @@ public class RewardsManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            DisplayRewards();
-        }
-    }
-
     public void DisplayRewards()
     {
         currentReward++;

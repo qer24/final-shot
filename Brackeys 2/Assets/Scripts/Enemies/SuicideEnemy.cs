@@ -57,7 +57,7 @@ public class SuicideEnemy : MonoBehaviour
             return;
         }
 
-        if (distanceToPlayer <= minDistanceToExplode && !isExploding)
+        if (distanceToPlayer <= minDistanceToExplode && !isExploding && !PlayerRewind.isRewinding)
         {
             if (!navMesh.isStopped)
             {

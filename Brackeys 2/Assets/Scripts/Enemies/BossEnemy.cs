@@ -38,7 +38,7 @@ public class BossEnemy : MonoBehaviour
         AudioManager.Play("shootEnemy", transform.position);
         for (int i = 0; i < shootPositions.Length; i++)
         {
-            var newBullet = Instantiate(bullet, shootPositions[i].position, shootPositions[i].rotation);
+            var newBullet = Lean.Pool.LeanPool.Spawn(bullet, shootPositions[i].position, shootPositions[i].rotation);
             newBullet.Init(stats.damage, transform, -newBullet.transform.right * bulletSpeed, true);
         }
     }

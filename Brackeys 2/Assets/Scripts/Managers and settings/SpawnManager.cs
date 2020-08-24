@@ -87,9 +87,13 @@ public class SpawnManager : MonoBehaviour
         {
             enemyCount = 1;
         }
-        if(currentWave == 4)
+        else if(currentWave == 4)
         {
             enemyCount = 2;
+        }
+        else if(currentWave == 10)
+        {
+            enemyCount = 1;
         }
         else if (currentWave == 25 || currentWave == 60)
         {
@@ -140,6 +144,10 @@ public class SpawnManager : MonoBehaviour
         {
             enemy = enemiesToSpawn[2].prefab;
         }
+        else if (currentWave == 10)
+        {
+            enemy = enemiesToSpawn[5].prefab;
+        }
         else if (currentWave % 15 == 0 && !spawnedBoss)
         {
             enemy = boss;
@@ -156,6 +164,13 @@ public class SpawnManager : MonoBehaviour
         else
         {
             enemy = enemiesToSpawn[GetRandomWeightedIndex(enemiesToSpawn)].prefab;
+            if (currentWave < 10)
+            {
+                while(enemy == enemiesToSpawn[5].prefab)
+                {
+                    enemy = enemiesToSpawn[GetRandomWeightedIndex(enemiesToSpawn)].prefab;
+                }
+            }
         }
         Instantiate(enemySpawnerPrefab, spawnPoints[randomSpawnPoint].position, Quaternion.identity).enemyToSpawn = enemy;
     }
@@ -185,10 +200,5 @@ public class SpawnManager : MonoBehaviour
 
         // No other item was selected, so return very last index.
         return index;
-    }
-
-    private void OnGUI()
-    {
-        GUILayout.Label($"current wave = {currentWave}");
     }
 }

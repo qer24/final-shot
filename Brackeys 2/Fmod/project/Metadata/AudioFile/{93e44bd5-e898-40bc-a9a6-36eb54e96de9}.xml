@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{93e44bd5-e898-40bc-a9a6-36eb54e96de9}">
+		<property name="assetPath">
+			<value>Drone flying sound effect.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>86.159999999999997</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{093c045c-0e39-4dc3-ba09-2b26fe35bf5b}</destination>
+		</relationship>
+	</object>
+</objects>

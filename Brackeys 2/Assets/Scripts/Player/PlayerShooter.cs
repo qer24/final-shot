@@ -260,6 +260,9 @@ public class PlayerShooter : MonoBehaviour
                         var ragdoll = hit.collider.GetComponent<RagdollDeath>();
                         if (ragdoll == null) ragdoll = hit.collider.GetComponentInParent<RagdollDeath>();
                         if (ragdoll != null) ragdoll.hitDirection = hit.collider.transform.position - transform.position;
+                        var droneRagdoll = hit.collider.GetComponent<DroneDeath>();
+                        if (droneRagdoll == null) droneRagdoll = hit.collider.GetComponentInParent<DroneDeath>();
+                        if (droneRagdoll != null) droneRagdoll.hitDirection = hit.collider.transform.position - transform.position;
 
                         hit.collider.TryGetComponent<IDamagable>(out var damagable);
                         if (damagable != null)
@@ -273,7 +276,10 @@ public class PlayerShooter : MonoBehaviour
                     else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
                     {
                         AudioManager.Play("wallImpact", hit.point);
-                        LeanPool.Spawn(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity).transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
+                        var hole = LeanPool.Spawn(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity);
+                        hole.transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
+                        hole.transform.localScale = bulletHole.transform.localScale;
+                        LeanPool.Despawn(hole, 5f);
                     }
 
                     if (hit.distance < 100f && hit.distance > 0.5f)
