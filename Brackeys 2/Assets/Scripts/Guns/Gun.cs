@@ -25,6 +25,7 @@ public class Gun : ScriptableObject
     public float shakeAmount = 1f;
     public float rotationSlowDownFactor = 1f;
     public bool isHitscan = false;
+    public bool canPierce = false;
     public GameObject projectile;
 
     public AnimationCurve damageFalloffCurve = AnimationCurve.Constant(0, 1, 1);

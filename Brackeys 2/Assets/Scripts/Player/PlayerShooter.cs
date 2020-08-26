@@ -249,46 +249,97 @@ public class PlayerShooter : MonoBehaviour
             if (currentGun.isHitscan)
             {
                 var ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward + gunRecoil);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, ignorePlayerMask))
+                if (currentGun.canPierce)
                 {
-                    //Debug.Log(hit.distance);
-                    //Debug.DrawRay(playerCamera.transform.position, (playerCamera.transform.forward + gunRecoil) * hit.distance, Color.red, 999f);
+                    RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity, ignorePlayerMask);
 
-                    if (hit.collider.CompareTag("Enemy"))
+                    if (hits.Length <= 0)
                     {
-                        var ragdoll = hit.collider.GetComponent<RagdollDeath>();
-                        if (ragdoll == null) ragdoll = hit.collider.GetComponentInParent<RagdollDeath>();
-                        if (ragdoll != null) ragdoll.hitDirection = hit.collider.transform.position - transform.position;
-                        var droneRagdoll = hit.collider.GetComponent<DroneDeath>();
-                        if (droneRagdoll == null) droneRagdoll = hit.collider.GetComponentInParent<DroneDeath>();
-                        if (droneRagdoll != null) droneRagdoll.hitDirection = hit.collider.transform.position - transform.position;
+                        LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f), shootPoint.position);
+                        return;
+                    }
 
-                        hit.collider.TryGetComponent<IDamagable>(out var damagable);
-                        if (damagable != null)
+                    bool wallFound = false;
+                    foreach (var pierceHit in hits)
+                    {
+                        if (pierceHit.collider.CompareTag("Enemy"))
                         {
-                            float falloffDamageMulti = currentGun.damageFalloffCurve.Evaluate(hit.distance);
-                            damagable.TakeDamage(damage * falloffDamageMulti);
+                            var ragdoll = pierceHit.collider.GetComponent<RagdollDeath>();
+                            if (ragdoll == null) ragdoll = pierceHit.collider.GetComponentInParent<RagdollDeath>();
+                            if (ragdoll != null) ragdoll.hitDirection = pierceHit.collider.transform.position - transform.position;
+                            var droneRagdoll = pierceHit.collider.GetComponent<DroneDeath>();
+                            if (droneRagdoll == null) droneRagdoll = pierceHit.collider.GetComponentInParent<DroneDeath>();
+                            if (droneRagdoll != null) droneRagdoll.hitDirection = pierceHit.collider.transform.position - transform.position;
+
+                            pierceHit.collider.TryGetComponent<IDamagable>(out var damagable);
+                            if (damagable != null)
+                            {
+                                float falloffDamageMulti = currentGun.damageFalloffCurve.Evaluate(pierceHit.distance);
+                                damagable.TakeDamage(damage * falloffDamageMulti);
+                            }
+
+                            LeanPool.Spawn(enemyHitParticles, pierceHit.point - (pierceHit.normal * 0.025f), Quaternion.identity).transform.LookAt(transform.position);
+                        }
+                        else if (pierceHit.collider.gameObject.layer == 0 && !wallFound) //Default layer, only obstacles there
+                        {
+                            wallFound = true;
+
+                            AudioManager.Play("wallImpact", pierceHit.point);
+                            var hole = LeanPool.Spawn(bulletHole, pierceHit.point + (pierceHit.normal * 0.025f), Quaternion.identity);
+                            hole.transform.rotation = Quaternion.FromToRotation(-Vector3.forward, pierceHit.normal);
+                            hole.transform.localScale = bulletHole.transform.localScale;
+                            LeanPool.Despawn(hole, 5f);
+
+                            if (pierceHit.distance < 100f && pierceHit.distance > 0.5f)
+                            {
+                                LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(pierceHit.point - shootPoint.position, pierceHit.point, shootPoint.position);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, ignorePlayerMask))
+                    {
+                        //Debug.Log(hit.distance);
+                        //Debug.DrawRay(playerCamera.transform.position, (playerCamera.transform.forward + gunRecoil) * hit.distance, Color.red, 999f);
+                        if (hit.collider.CompareTag("Enemy"))
+                        {
+                            RagdollDeath ragdoll = hit.collider.GetComponent<RagdollDeath>();
+                            if (ragdoll == null) ragdoll = hit.collider.GetComponentInParent<RagdollDeath>();
+                            if (ragdoll != null) ragdoll.hitDirection = hit.collider.transform.position - transform.position;
+                            var droneRagdoll = hit.collider.GetComponent<DroneDeath>();
+                            if (droneRagdoll == null) droneRagdoll = hit.collider.GetComponentInParent<DroneDeath>();
+                            if (droneRagdoll != null) droneRagdoll.hitDirection = hit.collider.transform.position - transform.position;
+
+                            hit.collider.TryGetComponent<IDamagable>(out var damagable);
+                            if (damagable != null)
+                            {
+                                float falloffDamageMulti = currentGun.damageFalloffCurve.Evaluate(hit.distance);
+                                damagable.TakeDamage(damage * falloffDamageMulti);
+                            }
+
+                            LeanPool.Spawn(enemyHitParticles, hit.point - (hit.normal * 0.025f), Quaternion.identity).transform.LookAt(transform.position);
+                        }
+                        else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
+                        {
+                            AudioManager.Play("wallImpact", hit.point);
+                            var hole = LeanPool.Spawn(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity);
+                            hole.transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
+                            hole.transform.localScale = bulletHole.transform.localScale;
+                            LeanPool.Despawn(hole, 5f);
                         }
 
-                        LeanPool.Spawn(enemyHitParticles, hit.point - (hit.normal * 0.025f), Quaternion.identity).transform.LookAt(transform.position);
+                        if (hit.distance < 100f && hit.distance > 0.5f)
+                        {
+                            LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - shootPoint.position, hit.point, shootPoint.position);
+                        }
                     }
-                    else if (hit.collider.gameObject.layer == 0) //Default layer, only obstacles there
+                    else
                     {
-                        AudioManager.Play("wallImpact", hit.point);
-                        var hole = LeanPool.Spawn(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity);
-                        hole.transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
-                        hole.transform.localScale = bulletHole.transform.localScale;
-                        LeanPool.Despawn(hole, 5f);
+                        LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f), shootPoint.position);
                     }
-
-                    if (hit.distance < 100f && hit.distance > 0.5f)
-                    {
-                        LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(hit.point - shootPoint.position, hit.point, shootPoint.position);
-                    }
-                }else
-                {
-                    LeanPool.Spawn(bulletTrace, shootPoint.position - shootPoint.transform.forward, Quaternion.identity).Init(ray.GetPoint(100f) - shootPoint.position, ray.GetPoint(100f), shootPoint.position);
                 }
             }else
             {

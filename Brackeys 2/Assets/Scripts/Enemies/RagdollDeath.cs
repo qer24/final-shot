@@ -54,7 +54,7 @@ public class RagdollDeath : Death
         }
 
         Invoke(nameof(DisableColliders), 5f);
-        if(CorpseCleanupSettings.cleanupCorpses && gameObject.activeSelf)
+        if(gameObject.activeSelf)
         {
             StartCoroutine(TryCleanup());
         }
@@ -64,16 +64,16 @@ public class RagdollDeath : Death
     {
         yield return new WaitForSeconds(4.5f);
 
-        while(rend.isVisible)
+        for (; ; )
         {
             yield return new WaitForSeconds(0.5f);
-            if(!CorpseCleanupSettings.cleanupCorpses)
+
+            if (!rend.isVisible && CorpseCleanupSettings.cleanupCorpses)
             {
+                Destroy(gameObject);
                 yield break;
             }
         }
-
-        Destroy(gameObject);
     }
 
     void DisableColliders()

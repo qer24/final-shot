@@ -152,14 +152,17 @@ public class SpawnManager : MonoBehaviour
         {
             enemy = boss;
             spawnedBoss = true; 
+        }else if (currentWave == 15 && spawnedBoss)
+        {
+            enemy = enemiesToSpawn[3].prefab;
         }
         else if(currentWave == 25 || currentWave == 60)
         {
             enemy = enemiesToSpawn[4].prefab;
         }
-        else if(currentWave == 30)
+        else if(currentWave == 30 && spawnedBoss)
         {
-            enemy = enemiesToSpawn[3].prefab;
+            enemy = enemiesToSpawn[5].prefab;
         }
         else
         {

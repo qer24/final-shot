@@ -285,6 +285,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1486467841173508721, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486467841173508721, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4801036625709981734, guid: 5de05084dfdcce44caab1bc444c9ce39,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -310,10 +320,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 7740261301198010912, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740261301198010912, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740261301198010912, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955106639829, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955106639829, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955106863011, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955127404837, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955127404837, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955127404837, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8700426955179863246, guid: 5de05084dfdcce44caab1bc444c9ce39,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955276989398, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955276989398, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426955276989398, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8700426955291792177, guid: 5de05084dfdcce44caab1bc444c9ce39,
         type: 3}
@@ -324,6 +394,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426956496615861, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426956496615861, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426956496615861, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426956570129594, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426956570129594, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426957149018967, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700426957149018967, guid: 5de05084dfdcce44caab1bc444c9ce39,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8700426957159245147, guid: 5de05084dfdcce44caab1bc444c9ce39,
         type: 3}
@@ -602,7 +707,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Crouch
 
-    (C)'
+    (C or CTRL)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56dc15746de584e4abd72f3242ed5b8e, type: 2}
   m_sharedMaterial: {fileID: 6787889849202202317, guid: 56dc15746de584e4abd72f3242ed5b8e,
@@ -672,10 +777,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 171344628}
-    characterCount: 10
+    characterCount: 18
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 2
     pageCount: 1
@@ -2638,7 +2743,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'rewind
 
-    (r)'
+    (default - r)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56dc15746de584e4abd72f3242ed5b8e, type: 2}
   m_sharedMaterial: {fileID: 6787889849202202317, guid: 56dc15746de584e4abd72f3242ed5b8e,
@@ -2708,10 +2813,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1424732662}
-    characterCount: 10
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 2
     pageCount: 1

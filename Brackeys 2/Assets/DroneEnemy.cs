@@ -78,7 +78,8 @@ public class DroneEnemy : MonoBehaviour
         {
             shootTimer = shootCooldown;
         }
-        rb.MovePosition(rb.position + desiredPos * Time.fixedDeltaTime * speed * 0.01f);
+        //rb.MovePosition(rb.position + desiredPos * Time.fixedDeltaTime * speed * 0.01f);
+        rb.AddForce((desiredPos.normalized * speed) - rb.velocity, ForceMode.VelocityChange);
     }
 
     IEnumerator Burst()

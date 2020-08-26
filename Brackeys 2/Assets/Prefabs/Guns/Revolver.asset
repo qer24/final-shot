@@ -27,6 +27,7 @@ MonoBehaviour:
   shakeAmount: 3
   rotationSlowDownFactor: 0.4
   isHitscan: 1
+  canPierce: 1
   projectile: {fileID: 4370573744249296770, guid: 16e0b2ef0fc8734478a90e665ed5f762,
     type: 3}
   damageFalloffCurve:
@@ -53,4 +54,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  currentAmmo: 6
+  currentAmmo: 4

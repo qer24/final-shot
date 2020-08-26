@@ -23,6 +23,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &-8631500339511110964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-8180946978967527386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,11 +243,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637338796822919474
+  lastModified: 637340032352626121
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2388
+    Value: 2436
   Exists: 1
 --- !u!114 &-4563169152765844747
 MonoBehaviour:
@@ -315,7 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Music.bank
   SubDir: 
-  lastModified: 637338796823249774
+  lastModified: 637340032352966437
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -345,6 +362,40 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 125
 --- !u!114 &-2501273197401218084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-1628877349061082668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &-1136818864370909224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -498,14 +549,32 @@ MonoBehaviour:
   - {fileID: 3206700460984759715}
   - {fileID: 7770705741957115066}
   - {fileID: 3741688204420162160}
+  - {fileID: 5848622677682296682}
   EditorParameters:
-  - {fileID: 2705969912116042413}
+  - {fileID: -1136818864370909224}
   MasterBanks:
   - {fileID: 5502800550547104755}
   StringsBanks:
   - {fileID: -5654696402905901759}
-  stringsBankWriteTime: 637338796822919474
+  stringsBankWriteTime: 637340032352626121
   cacheVersion: 3
+--- !u!114 &144705028574239093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowPass
+  m_EditorClassIdentifier: 
+  Name: LowPass
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &170710971625595576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,11 +1013,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: H:/Github/final-shot/final-shot/Brackeys 2/Fmod/project/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637338796822849413
+  lastModified: 637340032352566069
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1535936
+    Value: 1537856
   Exists: 1
 --- !u!114 &5765663280234382232
 MonoBehaviour:
@@ -967,6 +1036,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &5848622677682296682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/droneDeath
+  m_EditorClassIdentifier: 
+  Path: event:/droneDeath
+  guid: 6c0ec55c88887e4893c87a7e34437e2a
+  Banks:
+  - {fileID: 5502800550547104755}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 100
+  Length: 5500
 --- !u!114 &6935477608780443376
 MonoBehaviour:
   m_ObjectHideFlags: 0
