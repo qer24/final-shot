@@ -39,7 +39,8 @@ public class Damagable : MonoBehaviour, IDamagable
 
             AudioManager.Play("enemyHit", transform.position);
             Crosshair.instance.StartCoroutine(Crosshair.HitmarkCoroutine());
-            Instantiate(damagePopup, transform.position, Quaternion.identity).Init((int)amount, IsCrit);
+            if (PopupSettings.spawnPopupText)
+                Instantiate(damagePopup, transform.position, Quaternion.identity).Init((int)amount, IsCrit);
         }else
         {
             AudioManager.Play("playerHit");
